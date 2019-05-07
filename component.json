@@ -1,0 +1,193 @@
+{
+    "title": "Amazon Transcribe Service",
+    "description": "Operations and objects for transcribing speech to text.",
+    "docsUrl": "https://docs.aws.amazon.com/transcribe/",
+    "url": "https://api.apis.guru/v2/specs/amazonaws.com/transcribe/2017-10-26/swagger.json",
+    "envVars": {},
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "https://transcribe.amazonaws.com/",
+                    "http://transcribe.amazonaws.com/",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            },
+            "hmac": {
+                "label": "Authorization (hmac)",
+                "viewClass": "TextFieldView",
+                "note": "Amazon Signature authorization v4"
+            }
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "CreateVocabulary": {
+            "main": "./lib/actions/CreateVocabulary.js",
+            "title": "Creates a new custom vocabulary that you can use to change the way Amazon Transcribe handles transcription of an audio file. ",
+            "description": "Creates a new custom vocabulary that you can use to change the way Amazon Transcribe handles transcription of an audio file. ",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/CreateVocabulary.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "DeleteTranscriptionJob": {
+            "main": "./lib/actions/DeleteTranscriptionJob.js",
+            "title": "Deletes a previously submitted transcription job along with any other generated results such as the transcription, models, and so on.",
+            "description": "Deletes a previously submitted transcription job along with any other generated results such as the transcription, models, and so on.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/DeleteTranscriptionJob.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "DeleteVocabulary": {
+            "main": "./lib/actions/DeleteVocabulary.js",
+            "title": "Deletes a vocabulary from Amazon Transcribe. ",
+            "description": "Deletes a vocabulary from Amazon Transcribe. ",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/DeleteVocabulary.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetTranscriptionJob": {
+            "main": "./lib/actions/GetTranscriptionJob.js",
+            "title": "Returns information about a transcription job. To see the status of the job, check the <code>TranscriptionJobStatus</code> field. If the status is <code>COMPLETED</code>, the job is finished and you can find the results at the location specified in the <code>TranscriptionFileUri</code> field.",
+            "description": "Returns information about a transcription job. To see the status of the job, check the <code>TranscriptionJobStatus</code> field. If the status is <code>COMPLETED</code>, the job is finished and you can find the results at the location specified in the <code>TranscriptionFileUri</code> field.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetTranscriptionJob.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetVocabulary": {
+            "main": "./lib/actions/GetVocabulary.js",
+            "title": "Gets information about a vocabulary. ",
+            "description": "Gets information about a vocabulary. ",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetVocabulary.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ListTranscriptionJobs": {
+            "main": "./lib/actions/ListTranscriptionJobs.js",
+            "title": "Lists transcription jobs with the specified status.",
+            "description": "Lists transcription jobs with the specified status.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ListTranscriptionJobs.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ListVocabularies": {
+            "main": "./lib/actions/ListVocabularies.js",
+            "title": "Returns a list of vocabularies that match the specified criteria. If no criteria are specified, returns the entire list of vocabularies.",
+            "description": "Returns a list of vocabularies that match the specified criteria. If no criteria are specified, returns the entire list of vocabularies.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ListVocabularies.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "StartTranscriptionJob": {
+            "main": "./lib/actions/StartTranscriptionJob.js",
+            "title": "Starts an asynchronous job to transcribe speech to text. ",
+            "description": "Starts an asynchronous job to transcribe speech to text. ",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/StartTranscriptionJob.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "UpdateVocabulary": {
+            "main": "./lib/actions/UpdateVocabulary.js",
+            "title": "Updates an existing vocabulary with new values. The <code>UpdateVocabulary</code> operation overwrites all of the existing information with the values that you provide in the request. ",
+            "description": "Updates an existing vocabulary with new values. The <code>UpdateVocabulary</code> operation overwrites all of the existing information with the values that you provide in the request. ",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/UpdateVocabulary.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}

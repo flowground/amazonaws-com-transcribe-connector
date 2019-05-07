@@ -1,0 +1,134 @@
+{
+    "type": "object",
+    "properties": {
+        "Action": {
+            "required": true,
+            "type": "string"
+        },
+        "Version": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "properties": {
+                "LanguageCode": {
+                    "description": "The language code for the language used in the input media file.",
+                    "enum": [
+                        "en-US",
+                        "es-US",
+                        "en-AU",
+                        "fr-CA",
+                        "en-GB",
+                        "de-DE",
+                        "pt-BR",
+                        "fr-FR",
+                        "it-IT"
+                    ],
+                    "type": "string"
+                },
+                "Media": {
+                    "description": "An object that describes the input media for a transcription job.",
+                    "properties": {
+                        "MediaFileUri": {
+                            "description": "<p>The S3 location of the input media file. The URI must be in the same region as the API endpoint that you are calling. The general form is:</p> <p> <code> https://s3-&lt;aws-region&gt;.amazonaws.com/&lt;bucket-name&gt;/&lt;keyprefix&gt;/&lt;objectkey&gt; </code> </p> <p>For example:</p> <p> <code>https://s3-us-east-1.amazonaws.com/examplebucket/example.mp4</code> </p> <p> <code>https://s3-us-east-1.amazonaws.com/examplebucket/mediadocs/example.mp4</code> </p> <p>For more information about S3 object names, see <a href=\"http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingMetadata.html#object-keys\">Object Keys</a> in the <i>Amazon S3 Developer Guide</i>.</p>",
+                            "maxLength": 2000,
+                            "minLength": 1,
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                },
+                "MediaFormat": {
+                    "description": "The format of the input media file.",
+                    "enum": [
+                        "mp3",
+                        "mp4",
+                        "wav",
+                        "flac"
+                    ],
+                    "type": "string"
+                },
+                "MediaSampleRateHertz": {
+                    "description": "The sample rate, in Hertz, of the audio track in the input media file. ",
+                    "maximum": 48000,
+                    "minimum": 8000,
+                    "type": "integer"
+                },
+                "OutputBucketName": {
+                    "description": "<p>The location where the transcription is stored.</p> <p>If you set the <code>OutputBucketName</code>, Amazon Transcribe puts the transcription in the specified S3 bucket. When you call the <a>GetTranscriptionJob</a> operation, the operation returns this location in the <code>TranscriptFileUri</code> field. The S3 bucket must have permissions that allow Amazon Transcribe to put files in the bucket. For more information, see <a href=\"https://docs.aws.amazon.com/transcribe/latest/dg/access-control-managing-permissions.html#auth-role-iam-user\">Permissions Required for IAM User Roles</a>.</p> <p>If you don't set the <code>OutputBucketName</code>, Amazon Transcribe generates a pre-signed URL, a shareable URL that provides secure access to your transcription, and returns it in the <code>TranscriptFileUri</code> field. Use this URL to download the transcription.</p>",
+                    "pattern": "[a-z0-9][\\.\\-a-z0-9]{1,61}[a-z0-9]",
+                    "type": "string"
+                },
+                "Settings": {
+                    "description": "A <code>Settings</code> object that provides optional settings for a transcription job.",
+                    "properties": {
+                        "ChannelIdentification": {
+                            "description": "<p>Instructs Amazon Transcribe to process each audio channel separately and then merge the transcription output of each channel into a single transcription. </p> <p>Amazon Transcribe also produces a transcription of each item detected on an audio channel, including the start time and end time of the item and alternative transcriptions of the item including the confidence that Amazon Transcribe has in the transcription.</p> <p>You can't set both <code>ShowSpeakerLabels</code> and <code>ChannelIdentification</code> in the same request. If you set both, your request returns a <code>BadRequestException</code>.</p>",
+                            "type": "boolean"
+                        },
+                        "MaxSpeakerLabels": {
+                            "description": "The maximum number of speakers to identify in the input audio. If there are more speakers in the audio than this number, multiple speakers will be identified as a single speaker. If you specify the <code>MaxSpeakerLabels</code> field, you must set the <code>ShowSpeakerLabels</code> field to true.",
+                            "maximum": 10,
+                            "minimum": 2,
+                            "type": "integer"
+                        },
+                        "ShowSpeakerLabels": {
+                            "description": "<p>Determines whether the transcription job uses speaker recognition to identify different speakers in the input audio. Speaker recognition labels individual speakers in the audio file. If you set the <code>ShowSpeakerLabels</code> field to true, you must also set the maximum number of speaker labels <code>MaxSpeakerLabels</code> field.</p> <p>You can't set both <code>ShowSpeakerLabels</code> and <code>ChannelIdentification</code> in the same request. If you set both, your request returns a <code>BadRequestException</code>.</p>",
+                            "type": "boolean"
+                        },
+                        "VocabularyName": {
+                            "description": "The name of a vocabulary to use when processing the transcription job.",
+                            "maxLength": 200,
+                            "minLength": 1,
+                            "pattern": "^[0-9a-zA-Z._-]+",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                },
+                "TranscriptionJobName": {
+                    "description": "The name of the job. Note that you can't use the strings \".\" or \"..\" by themselves as the job name. The name must also be unique within an AWS account.",
+                    "maxLength": 200,
+                    "minLength": 1,
+                    "pattern": "^[0-9a-zA-Z._-]+",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "TranscriptionJobName",
+                "LanguageCode",
+                "MediaFormat",
+                "Media"
+            ],
+            "type": "object"
+        },
+        "X_Amz_Content_Sha256": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Date": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Algorithm": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Credential": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Security_Token": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Signature": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_SignedHeaders": {
+            "required": false,
+            "type": "string"
+        }
+    }
+}

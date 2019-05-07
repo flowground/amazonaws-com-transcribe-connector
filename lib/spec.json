@@ -1,0 +1,3468 @@
+{
+    "openapi": "3.0.0",
+    "servers": [
+        {
+            "url": "https://transcribe.amazonaws.com/"
+        },
+        {
+            "url": "http://transcribe.amazonaws.com/"
+        }
+    ],
+    "x-hasEquivalentPaths": true,
+    "info": {
+        "contact": {
+            "email": "mike.ralphson@gmail.com",
+            "name": "Mike Ralphson",
+            "url": "https://github.com/mermade/aws2openapi",
+            "x-twitter": "PermittedSoc"
+        },
+        "description": "Operations and objects for transcribing speech to text.",
+        "license": {
+            "name": "Apache 2.0 License",
+            "url": "http://www.apache.org/licenses/"
+        },
+        "termsOfService": "https://aws.amazon.com/service-terms/",
+        "title": "Amazon Transcribe Service",
+        "version": "2017-10-26",
+        "x-apiClientRegistration": {
+            "url": "https://portal.aws.amazon.com/gp/aws/developer/registration/index.html?nc2=h_ct"
+        },
+        "x-apisguru-categories": [
+            "cloud"
+        ],
+        "x-logo": {
+            "backgroundColor": "#FFFFFF",
+            "url": "https://api.apis.guru/v2/cache/logo/https_twitter.com_awscloud_profile_image.jpeg"
+        },
+        "x-origin": [
+            {
+                "contentType": "application/json",
+                "converter": {
+                    "url": "https://github.com/mermade/aws2openapi",
+                    "version": "1.0.0"
+                },
+                "url": "https://raw.githubusercontent.com/aws/aws-sdk-js/master/apis/transcribe-2017-10-26.normal.json",
+                "x-apisguru-direct": true
+            }
+        ],
+        "x-preferred": true,
+        "x-providerName": "amazonaws.com",
+        "x-release": "v4",
+        "x-serviceName": "transcribe"
+    },
+    "externalDocs": {
+        "description": "Amazon Web Services documentation",
+        "url": "https://docs.aws.amazon.com/transcribe/"
+    },
+    "security": [
+        {
+            "hmac": []
+        }
+    ],
+    "paths": {
+        "/": {
+            "parameters": [
+                {
+                    "in": "query",
+                    "name": "Action",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "query",
+                    "name": "Version",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Content-Sha256",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Date",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Algorithm",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Credential",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Security-Token",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Signature",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-SignedHeaders",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
+            "post": {
+                "description": "Creates a new custom vocabulary that you can use to change the way Amazon Transcribe handles transcription of an audio file. ",
+                "operationId": "CreateVocabulary",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "FailureReason": {
+                                            "description": "If the <code>VocabularyState</code> field is <code>FAILED</code>, this field contains information about why the job failed.",
+                                            "type": "string"
+                                        },
+                                        "LanguageCode": {
+                                            "description": "The language code of the vocabulary entries.",
+                                            "enum": [
+                                                "en-US",
+                                                "es-US",
+                                                "en-AU",
+                                                "fr-CA",
+                                                "en-GB",
+                                                "de-DE",
+                                                "pt-BR",
+                                                "fr-FR",
+                                                "it-IT"
+                                            ],
+                                            "type": "string"
+                                        },
+                                        "LastModifiedTime": {
+                                            "description": "The date and time that the vocabulary was created.",
+                                            "format": "date-time",
+                                            "type": "string"
+                                        },
+                                        "VocabularyName": {
+                                            "description": "The name of the vocabulary.",
+                                            "maxLength": 200,
+                                            "minLength": 1,
+                                            "pattern": "^[0-9a-zA-Z._-]+",
+                                            "type": "string"
+                                        },
+                                        "VocabularyState": {
+                                            "description": "The processing state of the vocabulary. When the <code>VocabularyState</code> field contains <code>READY</code> the vocabulary is ready to be used in a <code>StartTranscriptionJob</code> request.",
+                                            "enum": [
+                                                "PENDING",
+                                                "READY",
+                                                "FAILED"
+                                            ],
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "480": {
+                        "description": "BadRequestException",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "481": {
+                        "description": "LimitExceededException",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "482": {
+                        "description": "InternalFailureException",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "483": {
+                        "description": "ConflictException",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "LanguageCode": {
+                                        "description": "The language code of the vocabulary entries.",
+                                        "enum": [
+                                            "en-US",
+                                            "es-US",
+                                            "en-AU",
+                                            "fr-CA",
+                                            "en-GB",
+                                            "de-DE",
+                                            "pt-BR",
+                                            "fr-FR",
+                                            "it-IT"
+                                        ],
+                                        "type": "string"
+                                    },
+                                    "Phrases": {
+                                        "description": "An array of strings that contains the vocabulary entries. ",
+                                        "items": {
+                                            "maxLength": 256,
+                                            "minLength": 0,
+                                            "type": "string"
+                                        },
+                                        "type": "array"
+                                    },
+                                    "VocabularyName": {
+                                        "description": "The name of the vocabulary. The name must be unique within an AWS account. The name is case-sensitive.",
+                                        "maxLength": 200,
+                                        "minLength": 1,
+                                        "pattern": "^[0-9a-zA-Z._-]+",
+                                        "type": "string"
+                                    }
+                                },
+                                "required": [
+                                    "VocabularyName",
+                                    "LanguageCode",
+                                    "Phrases"
+                                ],
+                                "type": "object"
+                            }
+                        }
+                    },
+                    "required": true
+                }
+            }
+        },
+        "/#DeleteTranscriptionJob": {
+            "parameters": [
+                {
+                    "in": "query",
+                    "name": "Action",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "query",
+                    "name": "Version",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Content-Sha256",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Date",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Algorithm",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Credential",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Security-Token",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Signature",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-SignedHeaders",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
+            "post": {
+                "description": "Deletes a previously submitted transcription job along with any other generated results such as the transcription, models, and so on.",
+                "operationId": "DeleteTranscriptionJob",
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "480": {
+                        "description": "LimitExceededException",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "481": {
+                        "description": "BadRequestException",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "482": {
+                        "description": "InternalFailureException",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "TranscriptionJobName": {
+                                        "description": "The name of the transcription job to be deleted.",
+                                        "maxLength": 200,
+                                        "minLength": 1,
+                                        "pattern": "^[0-9a-zA-Z._-]+",
+                                        "type": "string"
+                                    }
+                                },
+                                "required": [
+                                    "TranscriptionJobName"
+                                ],
+                                "type": "object"
+                            }
+                        }
+                    },
+                    "required": true
+                }
+            }
+        },
+        "/#DeleteVocabulary": {
+            "parameters": [
+                {
+                    "in": "query",
+                    "name": "Action",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "query",
+                    "name": "Version",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Content-Sha256",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Date",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Algorithm",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Credential",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Security-Token",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Signature",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-SignedHeaders",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
+            "post": {
+                "description": "Deletes a vocabulary from Amazon Transcribe. ",
+                "operationId": "DeleteVocabulary",
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "480": {
+                        "description": "NotFoundException",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "481": {
+                        "description": "LimitExceededException",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "482": {
+                        "description": "BadRequestException",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "483": {
+                        "description": "InternalFailureException",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "VocabularyName": {
+                                        "description": "The name of the vocabulary to delete. ",
+                                        "maxLength": 200,
+                                        "minLength": 1,
+                                        "pattern": "^[0-9a-zA-Z._-]+",
+                                        "type": "string"
+                                    }
+                                },
+                                "required": [
+                                    "VocabularyName"
+                                ],
+                                "type": "object"
+                            }
+                        }
+                    },
+                    "required": true
+                }
+            }
+        },
+        "/#GetTranscriptionJob": {
+            "parameters": [
+                {
+                    "in": "query",
+                    "name": "Action",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "query",
+                    "name": "Version",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Content-Sha256",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Date",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Algorithm",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Credential",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Security-Token",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Signature",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-SignedHeaders",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
+            "post": {
+                "description": "Returns information about a transcription job. To see the status of the job, check the <code>TranscriptionJobStatus</code> field. If the status is <code>COMPLETED</code>, the job is finished and you can find the results at the location specified in the <code>TranscriptionFileUri</code> field.",
+                "operationId": "GetTranscriptionJob",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "TranscriptionJob": {
+                                            "description": "An object that contains the results of the transcription job.",
+                                            "properties": {
+                                                "CompletionTime": {
+                                                    "description": "A timestamp that shows when the job was completed.",
+                                                    "format": "date-time",
+                                                    "type": "string"
+                                                },
+                                                "CreationTime": {
+                                                    "description": "A timestamp that shows when the job was created.",
+                                                    "format": "date-time",
+                                                    "type": "string"
+                                                },
+                                                "FailureReason": {
+                                                    "description": "If the <code>TranscriptionJobStatus</code> field is <code>FAILED</code>, this field contains information about why the job failed.",
+                                                    "type": "string"
+                                                },
+                                                "LanguageCode": {
+                                                    "description": "The language code for the input speech.",
+                                                    "enum": [
+                                                        "en-US",
+                                                        "es-US",
+                                                        "en-AU",
+                                                        "fr-CA",
+                                                        "en-GB",
+                                                        "de-DE",
+                                                        "pt-BR",
+                                                        "fr-FR",
+                                                        "it-IT"
+                                                    ],
+                                                    "type": "string"
+                                                },
+                                                "Media": {
+                                                    "description": "An object that describes the input media for the transcription job.",
+                                                    "properties": {
+                                                        "MediaFileUri": {
+                                                            "description": "<p>The S3 location of the input media file. The URI must be in the same region as the API endpoint that you are calling. The general form is:</p> <p> <code> https://s3-&lt;aws-region&gt;.amazonaws.com/&lt;bucket-name&gt;/&lt;keyprefix&gt;/&lt;objectkey&gt; </code> </p> <p>For example:</p> <p> <code>https://s3-us-east-1.amazonaws.com/examplebucket/example.mp4</code> </p> <p> <code>https://s3-us-east-1.amazonaws.com/examplebucket/mediadocs/example.mp4</code> </p> <p>For more information about S3 object names, see <a href=\"http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingMetadata.html#object-keys\">Object Keys</a> in the <i>Amazon S3 Developer Guide</i>.</p>",
+                                                            "maxLength": 2000,
+                                                            "minLength": 1,
+                                                            "type": "string"
+                                                        }
+                                                    },
+                                                    "type": "object"
+                                                },
+                                                "MediaFormat": {
+                                                    "description": "The format of the input media file.",
+                                                    "enum": [
+                                                        "mp3",
+                                                        "mp4",
+                                                        "wav",
+                                                        "flac"
+                                                    ],
+                                                    "type": "string"
+                                                },
+                                                "MediaSampleRateHertz": {
+                                                    "description": "The sample rate, in Hertz, of the audio track in the input media file. ",
+                                                    "maximum": 48000,
+                                                    "minimum": 8000,
+                                                    "type": "integer"
+                                                },
+                                                "Settings": {
+                                                    "description": "Optional settings for the transcription job. Use these settings to turn on speaker recognition, to set the maximum number of speakers that should be identified and to specify a custom vocabulary to use when processing the transcription job.",
+                                                    "properties": {
+                                                        "ChannelIdentification": {
+                                                            "description": "<p>Instructs Amazon Transcribe to process each audio channel separately and then merge the transcription output of each channel into a single transcription. </p> <p>Amazon Transcribe also produces a transcription of each item detected on an audio channel, including the start time and end time of the item and alternative transcriptions of the item including the confidence that Amazon Transcribe has in the transcription.</p> <p>You can't set both <code>ShowSpeakerLabels</code> and <code>ChannelIdentification</code> in the same request. If you set both, your request returns a <code>BadRequestException</code>.</p>",
+                                                            "type": "boolean"
+                                                        },
+                                                        "MaxSpeakerLabels": {
+                                                            "description": "The maximum number of speakers to identify in the input audio. If there are more speakers in the audio than this number, multiple speakers will be identified as a single speaker. If you specify the <code>MaxSpeakerLabels</code> field, you must set the <code>ShowSpeakerLabels</code> field to true.",
+                                                            "maximum": 10,
+                                                            "minimum": 2,
+                                                            "type": "integer"
+                                                        },
+                                                        "ShowSpeakerLabels": {
+                                                            "description": "<p>Determines whether the transcription job uses speaker recognition to identify different speakers in the input audio. Speaker recognition labels individual speakers in the audio file. If you set the <code>ShowSpeakerLabels</code> field to true, you must also set the maximum number of speaker labels <code>MaxSpeakerLabels</code> field.</p> <p>You can't set both <code>ShowSpeakerLabels</code> and <code>ChannelIdentification</code> in the same request. If you set both, your request returns a <code>BadRequestException</code>.</p>",
+                                                            "type": "boolean"
+                                                        },
+                                                        "VocabularyName": {
+                                                            "description": "The name of a vocabulary to use when processing the transcription job.",
+                                                            "maxLength": 200,
+                                                            "minLength": 1,
+                                                            "pattern": "^[0-9a-zA-Z._-]+",
+                                                            "type": "string"
+                                                        }
+                                                    },
+                                                    "type": "object"
+                                                },
+                                                "Transcript": {
+                                                    "description": "An object that describes the output of the transcription job.",
+                                                    "properties": {
+                                                        "TranscriptFileUri": {
+                                                            "description": "<p>The location where the transcription is stored.</p> <p>Use this URI to access the transcription. If you specified an S3 bucket in the <code>OutputBucketName</code> field when you created the job, this is the URI of that bucket. If you chose to store the transcription in Amazon Transcribe, this is a shareable URL that provides secure access to that location.</p>",
+                                                            "maxLength": 2000,
+                                                            "minLength": 1,
+                                                            "type": "string"
+                                                        }
+                                                    },
+                                                    "type": "object"
+                                                },
+                                                "TranscriptionJobName": {
+                                                    "description": "The name of the transcription job.",
+                                                    "maxLength": 200,
+                                                    "minLength": 1,
+                                                    "pattern": "^[0-9a-zA-Z._-]+",
+                                                    "type": "string"
+                                                },
+                                                "TranscriptionJobStatus": {
+                                                    "description": "The status of the transcription job.",
+                                                    "enum": [
+                                                        "IN_PROGRESS",
+                                                        "FAILED",
+                                                        "COMPLETED"
+                                                    ],
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "480": {
+                        "description": "BadRequestException",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "481": {
+                        "description": "LimitExceededException",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "482": {
+                        "description": "InternalFailureException",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "483": {
+                        "description": "NotFoundException",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "TranscriptionJobName": {
+                                        "description": "The name of the job.",
+                                        "maxLength": 200,
+                                        "minLength": 1,
+                                        "pattern": "^[0-9a-zA-Z._-]+",
+                                        "type": "string"
+                                    }
+                                },
+                                "required": [
+                                    "TranscriptionJobName"
+                                ],
+                                "type": "object"
+                            }
+                        }
+                    },
+                    "required": true
+                }
+            }
+        },
+        "/#GetVocabulary": {
+            "parameters": [
+                {
+                    "in": "query",
+                    "name": "Action",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "query",
+                    "name": "Version",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Content-Sha256",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Date",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Algorithm",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Credential",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Security-Token",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Signature",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-SignedHeaders",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
+            "post": {
+                "description": "Gets information about a vocabulary. ",
+                "operationId": "GetVocabulary",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "DownloadUri": {
+                                            "description": "The S3 location where the vocabulary is stored. Use this URI to get the contents of the vocabulary. The URI is available for a limited time.",
+                                            "maxLength": 2000,
+                                            "minLength": 1,
+                                            "type": "string"
+                                        },
+                                        "FailureReason": {
+                                            "description": "If the <code>VocabularyState</code> field is <code>FAILED</code>, this field contains information about why the job failed.",
+                                            "type": "string"
+                                        },
+                                        "LanguageCode": {
+                                            "description": "The language code of the vocabulary entries.",
+                                            "enum": [
+                                                "en-US",
+                                                "es-US",
+                                                "en-AU",
+                                                "fr-CA",
+                                                "en-GB",
+                                                "de-DE",
+                                                "pt-BR",
+                                                "fr-FR",
+                                                "it-IT"
+                                            ],
+                                            "type": "string"
+                                        },
+                                        "LastModifiedTime": {
+                                            "description": "The date and time that the vocabulary was last modified.",
+                                            "format": "date-time",
+                                            "type": "string"
+                                        },
+                                        "VocabularyName": {
+                                            "description": "The name of the vocabulary to return.",
+                                            "maxLength": 200,
+                                            "minLength": 1,
+                                            "pattern": "^[0-9a-zA-Z._-]+",
+                                            "type": "string"
+                                        },
+                                        "VocabularyState": {
+                                            "description": "The processing state of the vocabulary.",
+                                            "enum": [
+                                                "PENDING",
+                                                "READY",
+                                                "FAILED"
+                                            ],
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "480": {
+                        "description": "NotFoundException",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "481": {
+                        "description": "LimitExceededException",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "482": {
+                        "description": "InternalFailureException",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "483": {
+                        "description": "BadRequestException",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "VocabularyName": {
+                                        "description": "The name of the vocabulary to return information about. The name is case-sensitive.",
+                                        "maxLength": 200,
+                                        "minLength": 1,
+                                        "pattern": "^[0-9a-zA-Z._-]+",
+                                        "type": "string"
+                                    }
+                                },
+                                "required": [
+                                    "VocabularyName"
+                                ],
+                                "type": "object"
+                            }
+                        }
+                    },
+                    "required": true
+                }
+            }
+        },
+        "/#ListTranscriptionJobs": {
+            "parameters": [
+                {
+                    "in": "query",
+                    "name": "Action",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "query",
+                    "name": "Version",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Content-Sha256",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Date",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Algorithm",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Credential",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Security-Token",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Signature",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-SignedHeaders",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
+            "post": {
+                "description": "Lists transcription jobs with the specified status.",
+                "operationId": "ListTranscriptionJobs",
+                "parameters": [
+                    {
+                        "description": "Pagination limit",
+                        "in": "query",
+                        "name": "MaxResults",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "Pagination token",
+                        "in": "query",
+                        "name": "NextToken",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "NextToken": {
+                                            "description": "The <code>ListTranscriptionJobs</code> operation returns a page of jobs at a time. The maximum size of the page is set by the <code>MaxResults</code> parameter. If there are more jobs in the list than the page size, Amazon Transcribe returns the <code>NextPage</code> token. Include the token in the next request to the <code>ListTranscriptionJobs</code> operation to return in the next page of jobs.",
+                                            "maxLength": 8192,
+                                            "type": "string"
+                                        },
+                                        "Status": {
+                                            "description": "The requested status of the jobs returned.",
+                                            "enum": [
+                                                "IN_PROGRESS",
+                                                "FAILED",
+                                                "COMPLETED"
+                                            ],
+                                            "type": "string"
+                                        },
+                                        "TranscriptionJobSummaries": {
+                                            "description": "A list of objects containing summary information for a transcription job.",
+                                            "items": {
+                                                "description": "Provides a summary of information about a transcription job. .",
+                                                "properties": {
+                                                    "CompletionTime": {
+                                                        "description": "A timestamp that shows when the job was completed.",
+                                                        "format": "date-time",
+                                                        "type": "string"
+                                                    },
+                                                    "CreationTime": {
+                                                        "description": "A timestamp that shows when the job was created.",
+                                                        "format": "date-time",
+                                                        "type": "string"
+                                                    },
+                                                    "FailureReason": {
+                                                        "description": "If the <code>TranscriptionJobStatus</code> field is <code>FAILED</code>, a description of the error.",
+                                                        "type": "string"
+                                                    },
+                                                    "LanguageCode": {
+                                                        "description": "The language code for the input speech.",
+                                                        "enum": [
+                                                            "en-US",
+                                                            "es-US",
+                                                            "en-AU",
+                                                            "fr-CA",
+                                                            "en-GB",
+                                                            "de-DE",
+                                                            "pt-BR",
+                                                            "fr-FR",
+                                                            "it-IT"
+                                                        ],
+                                                        "type": "string"
+                                                    },
+                                                    "OutputLocationType": {
+                                                        "description": "<p>Indicates the location of the output of the transcription job.</p> <p>If the value is <code>CUSTOMER_BUCKET</code> then the location is the S3 bucket specified in the <code>outputBucketName</code> field when the transcription job was started with the <code>StartTranscriptionJob</code> operation.</p> <p>If the value is <code>SERVICE_BUCKET</code> then the output is stored by Amazon Transcribe and can be retrieved using the URI in the <code>GetTranscriptionJob</code> response's <code>TranscriptFileUri</code> field.</p>",
+                                                        "enum": [
+                                                            "CUSTOMER_BUCKET",
+                                                            "SERVICE_BUCKET"
+                                                        ],
+                                                        "type": "string"
+                                                    },
+                                                    "TranscriptionJobName": {
+                                                        "description": "The name of the transcription job.",
+                                                        "maxLength": 200,
+                                                        "minLength": 1,
+                                                        "pattern": "^[0-9a-zA-Z._-]+",
+                                                        "type": "string"
+                                                    },
+                                                    "TranscriptionJobStatus": {
+                                                        "description": "The status of the transcription job. When the status is <code>COMPLETED</code>, use the <code>GetTranscriptionJob</code> operation to get the results of the transcription.",
+                                                        "enum": [
+                                                            "IN_PROGRESS",
+                                                            "FAILED",
+                                                            "COMPLETED"
+                                                        ],
+                                                        "type": "string"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            },
+                                            "type": "array"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "480": {
+                        "description": "BadRequestException",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "481": {
+                        "description": "LimitExceededException",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "482": {
+                        "description": "InternalFailureException",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "JobNameContains": {
+                                        "description": "When specified, the jobs returned in the list are limited to jobs whose name contains the specified string.",
+                                        "maxLength": 200,
+                                        "minLength": 1,
+                                        "pattern": "^[0-9a-zA-Z._-]+",
+                                        "type": "string"
+                                    },
+                                    "MaxResults": {
+                                        "description": "The maximum number of jobs to return in the response. If there are fewer results in the list, this response contains only the actual results.",
+                                        "maximum": 100,
+                                        "minimum": 1,
+                                        "type": "integer"
+                                    },
+                                    "NextToken": {
+                                        "description": "If the result of the previous request to <code>ListTranscriptionJobs</code> was truncated, include the <code>NextToken</code> to fetch the next set of jobs.",
+                                        "maxLength": 8192,
+                                        "type": "string"
+                                    },
+                                    "Status": {
+                                        "description": "When specified, returns only transcription jobs with the specified status. Jobs are ordered by creation date, with the newest jobs returned first. If you don’t specify a status, Amazon Transcribe returns all transcription jobs ordered by creation date. ",
+                                        "enum": [
+                                            "IN_PROGRESS",
+                                            "FAILED",
+                                            "COMPLETED"
+                                        ],
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    },
+                    "required": true
+                }
+            }
+        },
+        "/#ListVocabularies": {
+            "parameters": [
+                {
+                    "in": "query",
+                    "name": "Action",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "query",
+                    "name": "Version",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Content-Sha256",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Date",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Algorithm",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Credential",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Security-Token",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Signature",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-SignedHeaders",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
+            "post": {
+                "description": "Returns a list of vocabularies that match the specified criteria. If no criteria are specified, returns the entire list of vocabularies.",
+                "operationId": "ListVocabularies",
+                "parameters": [
+                    {
+                        "description": "Pagination limit",
+                        "in": "query",
+                        "name": "MaxResults",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "Pagination token",
+                        "in": "query",
+                        "name": "NextToken",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "NextToken": {
+                                            "description": "The <code>ListVocabularies</code> operation returns a page of vocabularies at a time. The maximum size of the page is set by the <code>MaxResults</code> parameter. If there are more jobs in the list than the page size, Amazon Transcribe returns the <code>NextPage</code> token. Include the token in the next request to the <code>ListVocabularies</code> operation to return in the next page of jobs.",
+                                            "maxLength": 8192,
+                                            "type": "string"
+                                        },
+                                        "Status": {
+                                            "description": "The requested vocabulary state.",
+                                            "enum": [
+                                                "IN_PROGRESS",
+                                                "FAILED",
+                                                "COMPLETED"
+                                            ],
+                                            "type": "string"
+                                        },
+                                        "Vocabularies": {
+                                            "description": "A list of objects that describe the vocabularies that match the search criteria in the request.",
+                                            "items": {
+                                                "description": "Provides information about a custom vocabulary. ",
+                                                "properties": {
+                                                    "LanguageCode": {
+                                                        "description": "The language code of the vocabulary entries.",
+                                                        "enum": [
+                                                            "en-US",
+                                                            "es-US",
+                                                            "en-AU",
+                                                            "fr-CA",
+                                                            "en-GB",
+                                                            "de-DE",
+                                                            "pt-BR",
+                                                            "fr-FR",
+                                                            "it-IT"
+                                                        ],
+                                                        "type": "string"
+                                                    },
+                                                    "LastModifiedTime": {
+                                                        "description": "The date and time that the vocabulary was last modified.",
+                                                        "format": "date-time",
+                                                        "type": "string"
+                                                    },
+                                                    "VocabularyName": {
+                                                        "description": "The name of the vocabulary.",
+                                                        "maxLength": 200,
+                                                        "minLength": 1,
+                                                        "pattern": "^[0-9a-zA-Z._-]+",
+                                                        "type": "string"
+                                                    },
+                                                    "VocabularyState": {
+                                                        "description": "The processing state of the vocabulary. If the state is <code>READY</code> you can use the vocabulary in a <code>StartTranscriptionJob</code> request.",
+                                                        "enum": [
+                                                            "PENDING",
+                                                            "READY",
+                                                            "FAILED"
+                                                        ],
+                                                        "type": "string"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            },
+                                            "type": "array"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "480": {
+                        "description": "BadRequestException",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "481": {
+                        "description": "LimitExceededException",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "482": {
+                        "description": "InternalFailureException",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "MaxResults": {
+                                        "description": "The maximum number of vocabularies to return in the response. If there are fewer results in the list, this response contains only the actual results.",
+                                        "maximum": 100,
+                                        "minimum": 1,
+                                        "type": "integer"
+                                    },
+                                    "NameContains": {
+                                        "description": "When specified, the vocabularies returned in the list are limited to vocabularies whose name contains the specified string. The search is case-insensitive, <code>ListVocabularies</code> will return both \"vocabularyname\" and \"VocabularyName\" in the response list.",
+                                        "maxLength": 200,
+                                        "minLength": 1,
+                                        "pattern": "^[0-9a-zA-Z._-]+",
+                                        "type": "string"
+                                    },
+                                    "NextToken": {
+                                        "description": "If the result of the previous request to <code>ListVocabularies</code> was truncated, include the <code>NextToken</code> to fetch the next set of jobs.",
+                                        "maxLength": 8192,
+                                        "type": "string"
+                                    },
+                                    "StateEquals": {
+                                        "description": "When specified, only returns vocabularies with the <code>VocabularyState</code> field equal to the specified state.",
+                                        "enum": [
+                                            "PENDING",
+                                            "READY",
+                                            "FAILED"
+                                        ],
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    },
+                    "required": true
+                }
+            }
+        },
+        "/#StartTranscriptionJob": {
+            "parameters": [
+                {
+                    "in": "query",
+                    "name": "Action",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "query",
+                    "name": "Version",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Content-Sha256",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Date",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Algorithm",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Credential",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Security-Token",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Signature",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-SignedHeaders",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
+            "post": {
+                "description": "Starts an asynchronous job to transcribe speech to text. ",
+                "operationId": "StartTranscriptionJob",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "TranscriptionJob": {
+                                            "description": "An object containing details of the asynchronous transcription job.",
+                                            "properties": {
+                                                "CompletionTime": {
+                                                    "description": "A timestamp that shows when the job was completed.",
+                                                    "format": "date-time",
+                                                    "type": "string"
+                                                },
+                                                "CreationTime": {
+                                                    "description": "A timestamp that shows when the job was created.",
+                                                    "format": "date-time",
+                                                    "type": "string"
+                                                },
+                                                "FailureReason": {
+                                                    "description": "If the <code>TranscriptionJobStatus</code> field is <code>FAILED</code>, this field contains information about why the job failed.",
+                                                    "type": "string"
+                                                },
+                                                "LanguageCode": {
+                                                    "description": "The language code for the input speech.",
+                                                    "enum": [
+                                                        "en-US",
+                                                        "es-US",
+                                                        "en-AU",
+                                                        "fr-CA",
+                                                        "en-GB",
+                                                        "de-DE",
+                                                        "pt-BR",
+                                                        "fr-FR",
+                                                        "it-IT"
+                                                    ],
+                                                    "type": "string"
+                                                },
+                                                "Media": {
+                                                    "description": "An object that describes the input media for the transcription job.",
+                                                    "properties": {
+                                                        "MediaFileUri": {
+                                                            "description": "<p>The S3 location of the input media file. The URI must be in the same region as the API endpoint that you are calling. The general form is:</p> <p> <code> https://s3-&lt;aws-region&gt;.amazonaws.com/&lt;bucket-name&gt;/&lt;keyprefix&gt;/&lt;objectkey&gt; </code> </p> <p>For example:</p> <p> <code>https://s3-us-east-1.amazonaws.com/examplebucket/example.mp4</code> </p> <p> <code>https://s3-us-east-1.amazonaws.com/examplebucket/mediadocs/example.mp4</code> </p> <p>For more information about S3 object names, see <a href=\"http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingMetadata.html#object-keys\">Object Keys</a> in the <i>Amazon S3 Developer Guide</i>.</p>",
+                                                            "maxLength": 2000,
+                                                            "minLength": 1,
+                                                            "type": "string"
+                                                        }
+                                                    },
+                                                    "type": "object"
+                                                },
+                                                "MediaFormat": {
+                                                    "description": "The format of the input media file.",
+                                                    "enum": [
+                                                        "mp3",
+                                                        "mp4",
+                                                        "wav",
+                                                        "flac"
+                                                    ],
+                                                    "type": "string"
+                                                },
+                                                "MediaSampleRateHertz": {
+                                                    "description": "The sample rate, in Hertz, of the audio track in the input media file. ",
+                                                    "maximum": 48000,
+                                                    "minimum": 8000,
+                                                    "type": "integer"
+                                                },
+                                                "Settings": {
+                                                    "description": "Optional settings for the transcription job. Use these settings to turn on speaker recognition, to set the maximum number of speakers that should be identified and to specify a custom vocabulary to use when processing the transcription job.",
+                                                    "properties": {
+                                                        "ChannelIdentification": {
+                                                            "description": "<p>Instructs Amazon Transcribe to process each audio channel separately and then merge the transcription output of each channel into a single transcription. </p> <p>Amazon Transcribe also produces a transcription of each item detected on an audio channel, including the start time and end time of the item and alternative transcriptions of the item including the confidence that Amazon Transcribe has in the transcription.</p> <p>You can't set both <code>ShowSpeakerLabels</code> and <code>ChannelIdentification</code> in the same request. If you set both, your request returns a <code>BadRequestException</code>.</p>",
+                                                            "type": "boolean"
+                                                        },
+                                                        "MaxSpeakerLabels": {
+                                                            "description": "The maximum number of speakers to identify in the input audio. If there are more speakers in the audio than this number, multiple speakers will be identified as a single speaker. If you specify the <code>MaxSpeakerLabels</code> field, you must set the <code>ShowSpeakerLabels</code> field to true.",
+                                                            "maximum": 10,
+                                                            "minimum": 2,
+                                                            "type": "integer"
+                                                        },
+                                                        "ShowSpeakerLabels": {
+                                                            "description": "<p>Determines whether the transcription job uses speaker recognition to identify different speakers in the input audio. Speaker recognition labels individual speakers in the audio file. If you set the <code>ShowSpeakerLabels</code> field to true, you must also set the maximum number of speaker labels <code>MaxSpeakerLabels</code> field.</p> <p>You can't set both <code>ShowSpeakerLabels</code> and <code>ChannelIdentification</code> in the same request. If you set both, your request returns a <code>BadRequestException</code>.</p>",
+                                                            "type": "boolean"
+                                                        },
+                                                        "VocabularyName": {
+                                                            "description": "The name of a vocabulary to use when processing the transcription job.",
+                                                            "maxLength": 200,
+                                                            "minLength": 1,
+                                                            "pattern": "^[0-9a-zA-Z._-]+",
+                                                            "type": "string"
+                                                        }
+                                                    },
+                                                    "type": "object"
+                                                },
+                                                "Transcript": {
+                                                    "description": "An object that describes the output of the transcription job.",
+                                                    "properties": {
+                                                        "TranscriptFileUri": {
+                                                            "description": "<p>The location where the transcription is stored.</p> <p>Use this URI to access the transcription. If you specified an S3 bucket in the <code>OutputBucketName</code> field when you created the job, this is the URI of that bucket. If you chose to store the transcription in Amazon Transcribe, this is a shareable URL that provides secure access to that location.</p>",
+                                                            "maxLength": 2000,
+                                                            "minLength": 1,
+                                                            "type": "string"
+                                                        }
+                                                    },
+                                                    "type": "object"
+                                                },
+                                                "TranscriptionJobName": {
+                                                    "description": "The name of the transcription job.",
+                                                    "maxLength": 200,
+                                                    "minLength": 1,
+                                                    "pattern": "^[0-9a-zA-Z._-]+",
+                                                    "type": "string"
+                                                },
+                                                "TranscriptionJobStatus": {
+                                                    "description": "The status of the transcription job.",
+                                                    "enum": [
+                                                        "IN_PROGRESS",
+                                                        "FAILED",
+                                                        "COMPLETED"
+                                                    ],
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "480": {
+                        "description": "BadRequestException",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "481": {
+                        "description": "LimitExceededException",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "482": {
+                        "description": "InternalFailureException",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "483": {
+                        "description": "ConflictException",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "LanguageCode": {
+                                        "description": "The language code for the language used in the input media file.",
+                                        "enum": [
+                                            "en-US",
+                                            "es-US",
+                                            "en-AU",
+                                            "fr-CA",
+                                            "en-GB",
+                                            "de-DE",
+                                            "pt-BR",
+                                            "fr-FR",
+                                            "it-IT"
+                                        ],
+                                        "type": "string"
+                                    },
+                                    "Media": {
+                                        "description": "An object that describes the input media for a transcription job.",
+                                        "properties": {
+                                            "MediaFileUri": {
+                                                "description": "<p>The S3 location of the input media file. The URI must be in the same region as the API endpoint that you are calling. The general form is:</p> <p> <code> https://s3-&lt;aws-region&gt;.amazonaws.com/&lt;bucket-name&gt;/&lt;keyprefix&gt;/&lt;objectkey&gt; </code> </p> <p>For example:</p> <p> <code>https://s3-us-east-1.amazonaws.com/examplebucket/example.mp4</code> </p> <p> <code>https://s3-us-east-1.amazonaws.com/examplebucket/mediadocs/example.mp4</code> </p> <p>For more information about S3 object names, see <a href=\"http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingMetadata.html#object-keys\">Object Keys</a> in the <i>Amazon S3 Developer Guide</i>.</p>",
+                                                "maxLength": 2000,
+                                                "minLength": 1,
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    "MediaFormat": {
+                                        "description": "The format of the input media file.",
+                                        "enum": [
+                                            "mp3",
+                                            "mp4",
+                                            "wav",
+                                            "flac"
+                                        ],
+                                        "type": "string"
+                                    },
+                                    "MediaSampleRateHertz": {
+                                        "description": "The sample rate, in Hertz, of the audio track in the input media file. ",
+                                        "maximum": 48000,
+                                        "minimum": 8000,
+                                        "type": "integer"
+                                    },
+                                    "OutputBucketName": {
+                                        "description": "<p>The location where the transcription is stored.</p> <p>If you set the <code>OutputBucketName</code>, Amazon Transcribe puts the transcription in the specified S3 bucket. When you call the <a>GetTranscriptionJob</a> operation, the operation returns this location in the <code>TranscriptFileUri</code> field. The S3 bucket must have permissions that allow Amazon Transcribe to put files in the bucket. For more information, see <a href=\"https://docs.aws.amazon.com/transcribe/latest/dg/access-control-managing-permissions.html#auth-role-iam-user\">Permissions Required for IAM User Roles</a>.</p> <p>If you don't set the <code>OutputBucketName</code>, Amazon Transcribe generates a pre-signed URL, a shareable URL that provides secure access to your transcription, and returns it in the <code>TranscriptFileUri</code> field. Use this URL to download the transcription.</p>",
+                                        "pattern": "[a-z0-9][\\.\\-a-z0-9]{1,61}[a-z0-9]",
+                                        "type": "string"
+                                    },
+                                    "Settings": {
+                                        "description": "A <code>Settings</code> object that provides optional settings for a transcription job.",
+                                        "properties": {
+                                            "ChannelIdentification": {
+                                                "description": "<p>Instructs Amazon Transcribe to process each audio channel separately and then merge the transcription output of each channel into a single transcription. </p> <p>Amazon Transcribe also produces a transcription of each item detected on an audio channel, including the start time and end time of the item and alternative transcriptions of the item including the confidence that Amazon Transcribe has in the transcription.</p> <p>You can't set both <code>ShowSpeakerLabels</code> and <code>ChannelIdentification</code> in the same request. If you set both, your request returns a <code>BadRequestException</code>.</p>",
+                                                "type": "boolean"
+                                            },
+                                            "MaxSpeakerLabels": {
+                                                "description": "The maximum number of speakers to identify in the input audio. If there are more speakers in the audio than this number, multiple speakers will be identified as a single speaker. If you specify the <code>MaxSpeakerLabels</code> field, you must set the <code>ShowSpeakerLabels</code> field to true.",
+                                                "maximum": 10,
+                                                "minimum": 2,
+                                                "type": "integer"
+                                            },
+                                            "ShowSpeakerLabels": {
+                                                "description": "<p>Determines whether the transcription job uses speaker recognition to identify different speakers in the input audio. Speaker recognition labels individual speakers in the audio file. If you set the <code>ShowSpeakerLabels</code> field to true, you must also set the maximum number of speaker labels <code>MaxSpeakerLabels</code> field.</p> <p>You can't set both <code>ShowSpeakerLabels</code> and <code>ChannelIdentification</code> in the same request. If you set both, your request returns a <code>BadRequestException</code>.</p>",
+                                                "type": "boolean"
+                                            },
+                                            "VocabularyName": {
+                                                "description": "The name of a vocabulary to use when processing the transcription job.",
+                                                "maxLength": 200,
+                                                "minLength": 1,
+                                                "pattern": "^[0-9a-zA-Z._-]+",
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    "TranscriptionJobName": {
+                                        "description": "The name of the job. Note that you can't use the strings \".\" or \"..\" by themselves as the job name. The name must also be unique within an AWS account.",
+                                        "maxLength": 200,
+                                        "minLength": 1,
+                                        "pattern": "^[0-9a-zA-Z._-]+",
+                                        "type": "string"
+                                    }
+                                },
+                                "required": [
+                                    "TranscriptionJobName",
+                                    "LanguageCode",
+                                    "MediaFormat",
+                                    "Media"
+                                ],
+                                "type": "object"
+                            }
+                        }
+                    },
+                    "required": true
+                }
+            }
+        },
+        "/#UpdateVocabulary": {
+            "parameters": [
+                {
+                    "in": "query",
+                    "name": "Action",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "query",
+                    "name": "Version",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Content-Sha256",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Date",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Algorithm",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Credential",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Security-Token",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Signature",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-SignedHeaders",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
+            "post": {
+                "description": "Updates an existing vocabulary with new values. The <code>UpdateVocabulary</code> operation overwrites all of the existing information with the values that you provide in the request. ",
+                "operationId": "UpdateVocabulary",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "LanguageCode": {
+                                            "description": "The language code of the vocabulary entries.",
+                                            "enum": [
+                                                "en-US",
+                                                "es-US",
+                                                "en-AU",
+                                                "fr-CA",
+                                                "en-GB",
+                                                "de-DE",
+                                                "pt-BR",
+                                                "fr-FR",
+                                                "it-IT"
+                                            ],
+                                            "type": "string"
+                                        },
+                                        "LastModifiedTime": {
+                                            "description": "The date and time that the vocabulary was updated.",
+                                            "format": "date-time",
+                                            "type": "string"
+                                        },
+                                        "VocabularyName": {
+                                            "description": "The name of the vocabulary that was updated.",
+                                            "maxLength": 200,
+                                            "minLength": 1,
+                                            "pattern": "^[0-9a-zA-Z._-]+",
+                                            "type": "string"
+                                        },
+                                        "VocabularyState": {
+                                            "description": "The processing state of the vocabulary. When the <code>VocabularyState</code> field contains <code>READY</code> the vocabulary is ready to be used in a <code>StartTranscriptionJob</code> request.",
+                                            "enum": [
+                                                "PENDING",
+                                                "READY",
+                                                "FAILED"
+                                            ],
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "480": {
+                        "description": "BadRequestException",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "481": {
+                        "description": "LimitExceededException",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "482": {
+                        "description": "InternalFailureException",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "483": {
+                        "description": "NotFoundException",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "484": {
+                        "description": "ConflictException",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "LanguageCode": {
+                                        "description": "The language code of the vocabulary entries.",
+                                        "enum": [
+                                            "en-US",
+                                            "es-US",
+                                            "en-AU",
+                                            "fr-CA",
+                                            "en-GB",
+                                            "de-DE",
+                                            "pt-BR",
+                                            "fr-FR",
+                                            "it-IT"
+                                        ],
+                                        "type": "string"
+                                    },
+                                    "Phrases": {
+                                        "description": "An array of strings containing the vocabulary entries.",
+                                        "items": {
+                                            "maxLength": 256,
+                                            "minLength": 0,
+                                            "type": "string"
+                                        },
+                                        "type": "array"
+                                    },
+                                    "VocabularyName": {
+                                        "description": "The name of the vocabulary to update. The name is case-sensitive.",
+                                        "maxLength": 200,
+                                        "minLength": 1,
+                                        "pattern": "^[0-9a-zA-Z._-]+",
+                                        "type": "string"
+                                    }
+                                },
+                                "required": [
+                                    "VocabularyName",
+                                    "LanguageCode",
+                                    "Phrases"
+                                ],
+                                "type": "object"
+                            }
+                        }
+                    },
+                    "required": true
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "BadRequestException": {},
+            "Boolean": {
+                "type": "boolean"
+            },
+            "ConflictException": {},
+            "CreateVocabularyRequest": {
+                "properties": {
+                    "LanguageCode": {
+                        "description": "The language code of the vocabulary entries.",
+                        "enum": [
+                            "en-US",
+                            "es-US",
+                            "en-AU",
+                            "fr-CA",
+                            "en-GB",
+                            "de-DE",
+                            "pt-BR",
+                            "fr-FR",
+                            "it-IT"
+                        ],
+                        "type": "string"
+                    },
+                    "Phrases": {
+                        "description": "An array of strings that contains the vocabulary entries. ",
+                        "items": {
+                            "maxLength": 256,
+                            "minLength": 0,
+                            "type": "string"
+                        },
+                        "type": "array"
+                    },
+                    "VocabularyName": {
+                        "description": "The name of the vocabulary. The name must be unique within an AWS account. The name is case-sensitive.",
+                        "maxLength": 200,
+                        "minLength": 1,
+                        "pattern": "^[0-9a-zA-Z._-]+",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "VocabularyName",
+                    "LanguageCode",
+                    "Phrases"
+                ],
+                "type": "object"
+            },
+            "CreateVocabularyResponse": {
+                "properties": {
+                    "FailureReason": {
+                        "description": "If the <code>VocabularyState</code> field is <code>FAILED</code>, this field contains information about why the job failed.",
+                        "type": "string"
+                    },
+                    "LanguageCode": {
+                        "description": "The language code of the vocabulary entries.",
+                        "enum": [
+                            "en-US",
+                            "es-US",
+                            "en-AU",
+                            "fr-CA",
+                            "en-GB",
+                            "de-DE",
+                            "pt-BR",
+                            "fr-FR",
+                            "it-IT"
+                        ],
+                        "type": "string"
+                    },
+                    "LastModifiedTime": {
+                        "description": "The date and time that the vocabulary was created.",
+                        "format": "date-time",
+                        "type": "string"
+                    },
+                    "VocabularyName": {
+                        "description": "The name of the vocabulary.",
+                        "maxLength": 200,
+                        "minLength": 1,
+                        "pattern": "^[0-9a-zA-Z._-]+",
+                        "type": "string"
+                    },
+                    "VocabularyState": {
+                        "description": "The processing state of the vocabulary. When the <code>VocabularyState</code> field contains <code>READY</code> the vocabulary is ready to be used in a <code>StartTranscriptionJob</code> request.",
+                        "enum": [
+                            "PENDING",
+                            "READY",
+                            "FAILED"
+                        ],
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "DateTime": {
+                "format": "date-time",
+                "type": "string"
+            },
+            "DeleteTranscriptionJobRequest": {
+                "properties": {
+                    "TranscriptionJobName": {
+                        "description": "The name of the transcription job to be deleted.",
+                        "maxLength": 200,
+                        "minLength": 1,
+                        "pattern": "^[0-9a-zA-Z._-]+",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "TranscriptionJobName"
+                ],
+                "type": "object"
+            },
+            "DeleteVocabularyRequest": {
+                "properties": {
+                    "VocabularyName": {
+                        "description": "The name of the vocabulary to delete. ",
+                        "maxLength": 200,
+                        "minLength": 1,
+                        "pattern": "^[0-9a-zA-Z._-]+",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "VocabularyName"
+                ],
+                "type": "object"
+            },
+            "FailureReason": {
+                "type": "string"
+            },
+            "GetTranscriptionJobRequest": {
+                "properties": {
+                    "TranscriptionJobName": {
+                        "description": "The name of the job.",
+                        "maxLength": 200,
+                        "minLength": 1,
+                        "pattern": "^[0-9a-zA-Z._-]+",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "TranscriptionJobName"
+                ],
+                "type": "object"
+            },
+            "GetTranscriptionJobResponse": {
+                "properties": {
+                    "TranscriptionJob": {
+                        "description": "An object that contains the results of the transcription job.",
+                        "properties": {
+                            "CompletionTime": {
+                                "description": "A timestamp that shows when the job was completed.",
+                                "format": "date-time",
+                                "type": "string"
+                            },
+                            "CreationTime": {
+                                "description": "A timestamp that shows when the job was created.",
+                                "format": "date-time",
+                                "type": "string"
+                            },
+                            "FailureReason": {
+                                "description": "If the <code>TranscriptionJobStatus</code> field is <code>FAILED</code>, this field contains information about why the job failed.",
+                                "type": "string"
+                            },
+                            "LanguageCode": {
+                                "description": "The language code for the input speech.",
+                                "enum": [
+                                    "en-US",
+                                    "es-US",
+                                    "en-AU",
+                                    "fr-CA",
+                                    "en-GB",
+                                    "de-DE",
+                                    "pt-BR",
+                                    "fr-FR",
+                                    "it-IT"
+                                ],
+                                "type": "string"
+                            },
+                            "Media": {
+                                "description": "An object that describes the input media for the transcription job.",
+                                "properties": {
+                                    "MediaFileUri": {
+                                        "description": "<p>The S3 location of the input media file. The URI must be in the same region as the API endpoint that you are calling. The general form is:</p> <p> <code> https://s3-&lt;aws-region&gt;.amazonaws.com/&lt;bucket-name&gt;/&lt;keyprefix&gt;/&lt;objectkey&gt; </code> </p> <p>For example:</p> <p> <code>https://s3-us-east-1.amazonaws.com/examplebucket/example.mp4</code> </p> <p> <code>https://s3-us-east-1.amazonaws.com/examplebucket/mediadocs/example.mp4</code> </p> <p>For more information about S3 object names, see <a href=\"http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingMetadata.html#object-keys\">Object Keys</a> in the <i>Amazon S3 Developer Guide</i>.</p>",
+                                        "maxLength": 2000,
+                                        "minLength": 1,
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "MediaFormat": {
+                                "description": "The format of the input media file.",
+                                "enum": [
+                                    "mp3",
+                                    "mp4",
+                                    "wav",
+                                    "flac"
+                                ],
+                                "type": "string"
+                            },
+                            "MediaSampleRateHertz": {
+                                "description": "The sample rate, in Hertz, of the audio track in the input media file. ",
+                                "maximum": 48000,
+                                "minimum": 8000,
+                                "type": "integer"
+                            },
+                            "Settings": {
+                                "description": "Optional settings for the transcription job. Use these settings to turn on speaker recognition, to set the maximum number of speakers that should be identified and to specify a custom vocabulary to use when processing the transcription job.",
+                                "properties": {
+                                    "ChannelIdentification": {
+                                        "description": "<p>Instructs Amazon Transcribe to process each audio channel separately and then merge the transcription output of each channel into a single transcription. </p> <p>Amazon Transcribe also produces a transcription of each item detected on an audio channel, including the start time and end time of the item and alternative transcriptions of the item including the confidence that Amazon Transcribe has in the transcription.</p> <p>You can't set both <code>ShowSpeakerLabels</code> and <code>ChannelIdentification</code> in the same request. If you set both, your request returns a <code>BadRequestException</code>.</p>",
+                                        "type": "boolean"
+                                    },
+                                    "MaxSpeakerLabels": {
+                                        "description": "The maximum number of speakers to identify in the input audio. If there are more speakers in the audio than this number, multiple speakers will be identified as a single speaker. If you specify the <code>MaxSpeakerLabels</code> field, you must set the <code>ShowSpeakerLabels</code> field to true.",
+                                        "maximum": 10,
+                                        "minimum": 2,
+                                        "type": "integer"
+                                    },
+                                    "ShowSpeakerLabels": {
+                                        "description": "<p>Determines whether the transcription job uses speaker recognition to identify different speakers in the input audio. Speaker recognition labels individual speakers in the audio file. If you set the <code>ShowSpeakerLabels</code> field to true, you must also set the maximum number of speaker labels <code>MaxSpeakerLabels</code> field.</p> <p>You can't set both <code>ShowSpeakerLabels</code> and <code>ChannelIdentification</code> in the same request. If you set both, your request returns a <code>BadRequestException</code>.</p>",
+                                        "type": "boolean"
+                                    },
+                                    "VocabularyName": {
+                                        "description": "The name of a vocabulary to use when processing the transcription job.",
+                                        "maxLength": 200,
+                                        "minLength": 1,
+                                        "pattern": "^[0-9a-zA-Z._-]+",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "Transcript": {
+                                "description": "An object that describes the output of the transcription job.",
+                                "properties": {
+                                    "TranscriptFileUri": {
+                                        "description": "<p>The location where the transcription is stored.</p> <p>Use this URI to access the transcription. If you specified an S3 bucket in the <code>OutputBucketName</code> field when you created the job, this is the URI of that bucket. If you chose to store the transcription in Amazon Transcribe, this is a shareable URL that provides secure access to that location.</p>",
+                                        "maxLength": 2000,
+                                        "minLength": 1,
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "TranscriptionJobName": {
+                                "description": "The name of the transcription job.",
+                                "maxLength": 200,
+                                "minLength": 1,
+                                "pattern": "^[0-9a-zA-Z._-]+",
+                                "type": "string"
+                            },
+                            "TranscriptionJobStatus": {
+                                "description": "The status of the transcription job.",
+                                "enum": [
+                                    "IN_PROGRESS",
+                                    "FAILED",
+                                    "COMPLETED"
+                                ],
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    }
+                },
+                "type": "object"
+            },
+            "GetVocabularyRequest": {
+                "properties": {
+                    "VocabularyName": {
+                        "description": "The name of the vocabulary to return information about. The name is case-sensitive.",
+                        "maxLength": 200,
+                        "minLength": 1,
+                        "pattern": "^[0-9a-zA-Z._-]+",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "VocabularyName"
+                ],
+                "type": "object"
+            },
+            "GetVocabularyResponse": {
+                "properties": {
+                    "DownloadUri": {
+                        "description": "The S3 location where the vocabulary is stored. Use this URI to get the contents of the vocabulary. The URI is available for a limited time.",
+                        "maxLength": 2000,
+                        "minLength": 1,
+                        "type": "string"
+                    },
+                    "FailureReason": {
+                        "description": "If the <code>VocabularyState</code> field is <code>FAILED</code>, this field contains information about why the job failed.",
+                        "type": "string"
+                    },
+                    "LanguageCode": {
+                        "description": "The language code of the vocabulary entries.",
+                        "enum": [
+                            "en-US",
+                            "es-US",
+                            "en-AU",
+                            "fr-CA",
+                            "en-GB",
+                            "de-DE",
+                            "pt-BR",
+                            "fr-FR",
+                            "it-IT"
+                        ],
+                        "type": "string"
+                    },
+                    "LastModifiedTime": {
+                        "description": "The date and time that the vocabulary was last modified.",
+                        "format": "date-time",
+                        "type": "string"
+                    },
+                    "VocabularyName": {
+                        "description": "The name of the vocabulary to return.",
+                        "maxLength": 200,
+                        "minLength": 1,
+                        "pattern": "^[0-9a-zA-Z._-]+",
+                        "type": "string"
+                    },
+                    "VocabularyState": {
+                        "description": "The processing state of the vocabulary.",
+                        "enum": [
+                            "PENDING",
+                            "READY",
+                            "FAILED"
+                        ],
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "InternalFailureException": {},
+            "LanguageCode": {
+                "enum": [
+                    "en-US",
+                    "es-US",
+                    "en-AU",
+                    "fr-CA",
+                    "en-GB",
+                    "de-DE",
+                    "pt-BR",
+                    "fr-FR",
+                    "it-IT"
+                ],
+                "type": "string"
+            },
+            "LimitExceededException": {},
+            "ListTranscriptionJobsRequest": {
+                "properties": {
+                    "JobNameContains": {
+                        "description": "When specified, the jobs returned in the list are limited to jobs whose name contains the specified string.",
+                        "maxLength": 200,
+                        "minLength": 1,
+                        "pattern": "^[0-9a-zA-Z._-]+",
+                        "type": "string"
+                    },
+                    "MaxResults": {
+                        "description": "The maximum number of jobs to return in the response. If there are fewer results in the list, this response contains only the actual results.",
+                        "maximum": 100,
+                        "minimum": 1,
+                        "type": "integer"
+                    },
+                    "NextToken": {
+                        "description": "If the result of the previous request to <code>ListTranscriptionJobs</code> was truncated, include the <code>NextToken</code> to fetch the next set of jobs.",
+                        "maxLength": 8192,
+                        "type": "string"
+                    },
+                    "Status": {
+                        "description": "When specified, returns only transcription jobs with the specified status. Jobs are ordered by creation date, with the newest jobs returned first. If you don’t specify a status, Amazon Transcribe returns all transcription jobs ordered by creation date. ",
+                        "enum": [
+                            "IN_PROGRESS",
+                            "FAILED",
+                            "COMPLETED"
+                        ],
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "ListTranscriptionJobsResponse": {
+                "properties": {
+                    "NextToken": {
+                        "description": "The <code>ListTranscriptionJobs</code> operation returns a page of jobs at a time. The maximum size of the page is set by the <code>MaxResults</code> parameter. If there are more jobs in the list than the page size, Amazon Transcribe returns the <code>NextPage</code> token. Include the token in the next request to the <code>ListTranscriptionJobs</code> operation to return in the next page of jobs.",
+                        "maxLength": 8192,
+                        "type": "string"
+                    },
+                    "Status": {
+                        "description": "The requested status of the jobs returned.",
+                        "enum": [
+                            "IN_PROGRESS",
+                            "FAILED",
+                            "COMPLETED"
+                        ],
+                        "type": "string"
+                    },
+                    "TranscriptionJobSummaries": {
+                        "description": "A list of objects containing summary information for a transcription job.",
+                        "items": {
+                            "description": "Provides a summary of information about a transcription job. .",
+                            "properties": {
+                                "CompletionTime": {
+                                    "description": "A timestamp that shows when the job was completed.",
+                                    "format": "date-time",
+                                    "type": "string"
+                                },
+                                "CreationTime": {
+                                    "description": "A timestamp that shows when the job was created.",
+                                    "format": "date-time",
+                                    "type": "string"
+                                },
+                                "FailureReason": {
+                                    "description": "If the <code>TranscriptionJobStatus</code> field is <code>FAILED</code>, a description of the error.",
+                                    "type": "string"
+                                },
+                                "LanguageCode": {
+                                    "description": "The language code for the input speech.",
+                                    "enum": [
+                                        "en-US",
+                                        "es-US",
+                                        "en-AU",
+                                        "fr-CA",
+                                        "en-GB",
+                                        "de-DE",
+                                        "pt-BR",
+                                        "fr-FR",
+                                        "it-IT"
+                                    ],
+                                    "type": "string"
+                                },
+                                "OutputLocationType": {
+                                    "description": "<p>Indicates the location of the output of the transcription job.</p> <p>If the value is <code>CUSTOMER_BUCKET</code> then the location is the S3 bucket specified in the <code>outputBucketName</code> field when the transcription job was started with the <code>StartTranscriptionJob</code> operation.</p> <p>If the value is <code>SERVICE_BUCKET</code> then the output is stored by Amazon Transcribe and can be retrieved using the URI in the <code>GetTranscriptionJob</code> response's <code>TranscriptFileUri</code> field.</p>",
+                                    "enum": [
+                                        "CUSTOMER_BUCKET",
+                                        "SERVICE_BUCKET"
+                                    ],
+                                    "type": "string"
+                                },
+                                "TranscriptionJobName": {
+                                    "description": "The name of the transcription job.",
+                                    "maxLength": 200,
+                                    "minLength": 1,
+                                    "pattern": "^[0-9a-zA-Z._-]+",
+                                    "type": "string"
+                                },
+                                "TranscriptionJobStatus": {
+                                    "description": "The status of the transcription job. When the status is <code>COMPLETED</code>, use the <code>GetTranscriptionJob</code> operation to get the results of the transcription.",
+                                    "enum": [
+                                        "IN_PROGRESS",
+                                        "FAILED",
+                                        "COMPLETED"
+                                    ],
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "type": "array"
+                    }
+                },
+                "type": "object"
+            },
+            "ListVocabulariesRequest": {
+                "properties": {
+                    "MaxResults": {
+                        "description": "The maximum number of vocabularies to return in the response. If there are fewer results in the list, this response contains only the actual results.",
+                        "maximum": 100,
+                        "minimum": 1,
+                        "type": "integer"
+                    },
+                    "NameContains": {
+                        "description": "When specified, the vocabularies returned in the list are limited to vocabularies whose name contains the specified string. The search is case-insensitive, <code>ListVocabularies</code> will return both \"vocabularyname\" and \"VocabularyName\" in the response list.",
+                        "maxLength": 200,
+                        "minLength": 1,
+                        "pattern": "^[0-9a-zA-Z._-]+",
+                        "type": "string"
+                    },
+                    "NextToken": {
+                        "description": "If the result of the previous request to <code>ListVocabularies</code> was truncated, include the <code>NextToken</code> to fetch the next set of jobs.",
+                        "maxLength": 8192,
+                        "type": "string"
+                    },
+                    "StateEquals": {
+                        "description": "When specified, only returns vocabularies with the <code>VocabularyState</code> field equal to the specified state.",
+                        "enum": [
+                            "PENDING",
+                            "READY",
+                            "FAILED"
+                        ],
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "ListVocabulariesResponse": {
+                "properties": {
+                    "NextToken": {
+                        "description": "The <code>ListVocabularies</code> operation returns a page of vocabularies at a time. The maximum size of the page is set by the <code>MaxResults</code> parameter. If there are more jobs in the list than the page size, Amazon Transcribe returns the <code>NextPage</code> token. Include the token in the next request to the <code>ListVocabularies</code> operation to return in the next page of jobs.",
+                        "maxLength": 8192,
+                        "type": "string"
+                    },
+                    "Status": {
+                        "description": "The requested vocabulary state.",
+                        "enum": [
+                            "IN_PROGRESS",
+                            "FAILED",
+                            "COMPLETED"
+                        ],
+                        "type": "string"
+                    },
+                    "Vocabularies": {
+                        "description": "A list of objects that describe the vocabularies that match the search criteria in the request.",
+                        "items": {
+                            "description": "Provides information about a custom vocabulary. ",
+                            "properties": {
+                                "LanguageCode": {
+                                    "description": "The language code of the vocabulary entries.",
+                                    "enum": [
+                                        "en-US",
+                                        "es-US",
+                                        "en-AU",
+                                        "fr-CA",
+                                        "en-GB",
+                                        "de-DE",
+                                        "pt-BR",
+                                        "fr-FR",
+                                        "it-IT"
+                                    ],
+                                    "type": "string"
+                                },
+                                "LastModifiedTime": {
+                                    "description": "The date and time that the vocabulary was last modified.",
+                                    "format": "date-time",
+                                    "type": "string"
+                                },
+                                "VocabularyName": {
+                                    "description": "The name of the vocabulary.",
+                                    "maxLength": 200,
+                                    "minLength": 1,
+                                    "pattern": "^[0-9a-zA-Z._-]+",
+                                    "type": "string"
+                                },
+                                "VocabularyState": {
+                                    "description": "The processing state of the vocabulary. If the state is <code>READY</code> you can use the vocabulary in a <code>StartTranscriptionJob</code> request.",
+                                    "enum": [
+                                        "PENDING",
+                                        "READY",
+                                        "FAILED"
+                                    ],
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "type": "array"
+                    }
+                },
+                "type": "object"
+            },
+            "MaxResults": {
+                "maximum": 100,
+                "minimum": 1,
+                "type": "integer"
+            },
+            "MaxSpeakers": {
+                "maximum": 10,
+                "minimum": 2,
+                "type": "integer"
+            },
+            "Media": {
+                "description": "Describes the input media file in a transcription request.",
+                "properties": {
+                    "MediaFileUri": {
+                        "description": "<p>The S3 location of the input media file. The URI must be in the same region as the API endpoint that you are calling. The general form is:</p> <p> <code> https://s3-&lt;aws-region&gt;.amazonaws.com/&lt;bucket-name&gt;/&lt;keyprefix&gt;/&lt;objectkey&gt; </code> </p> <p>For example:</p> <p> <code>https://s3-us-east-1.amazonaws.com/examplebucket/example.mp4</code> </p> <p> <code>https://s3-us-east-1.amazonaws.com/examplebucket/mediadocs/example.mp4</code> </p> <p>For more information about S3 object names, see <a href=\"http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingMetadata.html#object-keys\">Object Keys</a> in the <i>Amazon S3 Developer Guide</i>.</p>",
+                        "maxLength": 2000,
+                        "minLength": 1,
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "MediaFormat": {
+                "enum": [
+                    "mp3",
+                    "mp4",
+                    "wav",
+                    "flac"
+                ],
+                "type": "string"
+            },
+            "MediaSampleRateHertz": {
+                "maximum": 48000,
+                "minimum": 8000,
+                "type": "integer"
+            },
+            "NextToken": {
+                "maxLength": 8192,
+                "type": "string"
+            },
+            "NotFoundException": {},
+            "OutputBucketName": {
+                "pattern": "[a-z0-9][\\.\\-a-z0-9]{1,61}[a-z0-9]",
+                "type": "string"
+            },
+            "OutputLocationType": {
+                "enum": [
+                    "CUSTOMER_BUCKET",
+                    "SERVICE_BUCKET"
+                ],
+                "type": "string"
+            },
+            "Phrase": {
+                "maxLength": 256,
+                "minLength": 0,
+                "type": "string"
+            },
+            "Phrases": {
+                "items": {
+                    "maxLength": 256,
+                    "minLength": 0,
+                    "type": "string"
+                },
+                "type": "array"
+            },
+            "Settings": {
+                "description": "Provides optional settings for the <code>StartTranscriptionJob</code> operation.",
+                "properties": {
+                    "ChannelIdentification": {
+                        "description": "<p>Instructs Amazon Transcribe to process each audio channel separately and then merge the transcription output of each channel into a single transcription. </p> <p>Amazon Transcribe also produces a transcription of each item detected on an audio channel, including the start time and end time of the item and alternative transcriptions of the item including the confidence that Amazon Transcribe has in the transcription.</p> <p>You can't set both <code>ShowSpeakerLabels</code> and <code>ChannelIdentification</code> in the same request. If you set both, your request returns a <code>BadRequestException</code>.</p>",
+                        "type": "boolean"
+                    },
+                    "MaxSpeakerLabels": {
+                        "description": "The maximum number of speakers to identify in the input audio. If there are more speakers in the audio than this number, multiple speakers will be identified as a single speaker. If you specify the <code>MaxSpeakerLabels</code> field, you must set the <code>ShowSpeakerLabels</code> field to true.",
+                        "maximum": 10,
+                        "minimum": 2,
+                        "type": "integer"
+                    },
+                    "ShowSpeakerLabels": {
+                        "description": "<p>Determines whether the transcription job uses speaker recognition to identify different speakers in the input audio. Speaker recognition labels individual speakers in the audio file. If you set the <code>ShowSpeakerLabels</code> field to true, you must also set the maximum number of speaker labels <code>MaxSpeakerLabels</code> field.</p> <p>You can't set both <code>ShowSpeakerLabels</code> and <code>ChannelIdentification</code> in the same request. If you set both, your request returns a <code>BadRequestException</code>.</p>",
+                        "type": "boolean"
+                    },
+                    "VocabularyName": {
+                        "description": "The name of a vocabulary to use when processing the transcription job.",
+                        "maxLength": 200,
+                        "minLength": 1,
+                        "pattern": "^[0-9a-zA-Z._-]+",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "StartTranscriptionJobRequest": {
+                "properties": {
+                    "LanguageCode": {
+                        "description": "The language code for the language used in the input media file.",
+                        "enum": [
+                            "en-US",
+                            "es-US",
+                            "en-AU",
+                            "fr-CA",
+                            "en-GB",
+                            "de-DE",
+                            "pt-BR",
+                            "fr-FR",
+                            "it-IT"
+                        ],
+                        "type": "string"
+                    },
+                    "Media": {
+                        "description": "An object that describes the input media for a transcription job.",
+                        "properties": {
+                            "MediaFileUri": {
+                                "description": "<p>The S3 location of the input media file. The URI must be in the same region as the API endpoint that you are calling. The general form is:</p> <p> <code> https://s3-&lt;aws-region&gt;.amazonaws.com/&lt;bucket-name&gt;/&lt;keyprefix&gt;/&lt;objectkey&gt; </code> </p> <p>For example:</p> <p> <code>https://s3-us-east-1.amazonaws.com/examplebucket/example.mp4</code> </p> <p> <code>https://s3-us-east-1.amazonaws.com/examplebucket/mediadocs/example.mp4</code> </p> <p>For more information about S3 object names, see <a href=\"http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingMetadata.html#object-keys\">Object Keys</a> in the <i>Amazon S3 Developer Guide</i>.</p>",
+                                "maxLength": 2000,
+                                "minLength": 1,
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "MediaFormat": {
+                        "description": "The format of the input media file.",
+                        "enum": [
+                            "mp3",
+                            "mp4",
+                            "wav",
+                            "flac"
+                        ],
+                        "type": "string"
+                    },
+                    "MediaSampleRateHertz": {
+                        "description": "The sample rate, in Hertz, of the audio track in the input media file. ",
+                        "maximum": 48000,
+                        "minimum": 8000,
+                        "type": "integer"
+                    },
+                    "OutputBucketName": {
+                        "description": "<p>The location where the transcription is stored.</p> <p>If you set the <code>OutputBucketName</code>, Amazon Transcribe puts the transcription in the specified S3 bucket. When you call the <a>GetTranscriptionJob</a> operation, the operation returns this location in the <code>TranscriptFileUri</code> field. The S3 bucket must have permissions that allow Amazon Transcribe to put files in the bucket. For more information, see <a href=\"https://docs.aws.amazon.com/transcribe/latest/dg/access-control-managing-permissions.html#auth-role-iam-user\">Permissions Required for IAM User Roles</a>.</p> <p>If you don't set the <code>OutputBucketName</code>, Amazon Transcribe generates a pre-signed URL, a shareable URL that provides secure access to your transcription, and returns it in the <code>TranscriptFileUri</code> field. Use this URL to download the transcription.</p>",
+                        "pattern": "[a-z0-9][\\.\\-a-z0-9]{1,61}[a-z0-9]",
+                        "type": "string"
+                    },
+                    "Settings": {
+                        "description": "A <code>Settings</code> object that provides optional settings for a transcription job.",
+                        "properties": {
+                            "ChannelIdentification": {
+                                "description": "<p>Instructs Amazon Transcribe to process each audio channel separately and then merge the transcription output of each channel into a single transcription. </p> <p>Amazon Transcribe also produces a transcription of each item detected on an audio channel, including the start time and end time of the item and alternative transcriptions of the item including the confidence that Amazon Transcribe has in the transcription.</p> <p>You can't set both <code>ShowSpeakerLabels</code> and <code>ChannelIdentification</code> in the same request. If you set both, your request returns a <code>BadRequestException</code>.</p>",
+                                "type": "boolean"
+                            },
+                            "MaxSpeakerLabels": {
+                                "description": "The maximum number of speakers to identify in the input audio. If there are more speakers in the audio than this number, multiple speakers will be identified as a single speaker. If you specify the <code>MaxSpeakerLabels</code> field, you must set the <code>ShowSpeakerLabels</code> field to true.",
+                                "maximum": 10,
+                                "minimum": 2,
+                                "type": "integer"
+                            },
+                            "ShowSpeakerLabels": {
+                                "description": "<p>Determines whether the transcription job uses speaker recognition to identify different speakers in the input audio. Speaker recognition labels individual speakers in the audio file. If you set the <code>ShowSpeakerLabels</code> field to true, you must also set the maximum number of speaker labels <code>MaxSpeakerLabels</code> field.</p> <p>You can't set both <code>ShowSpeakerLabels</code> and <code>ChannelIdentification</code> in the same request. If you set both, your request returns a <code>BadRequestException</code>.</p>",
+                                "type": "boolean"
+                            },
+                            "VocabularyName": {
+                                "description": "The name of a vocabulary to use when processing the transcription job.",
+                                "maxLength": 200,
+                                "minLength": 1,
+                                "pattern": "^[0-9a-zA-Z._-]+",
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "TranscriptionJobName": {
+                        "description": "The name of the job. Note that you can't use the strings \".\" or \"..\" by themselves as the job name. The name must also be unique within an AWS account.",
+                        "maxLength": 200,
+                        "minLength": 1,
+                        "pattern": "^[0-9a-zA-Z._-]+",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "TranscriptionJobName",
+                    "LanguageCode",
+                    "MediaFormat",
+                    "Media"
+                ],
+                "type": "object"
+            },
+            "StartTranscriptionJobResponse": {
+                "properties": {
+                    "TranscriptionJob": {
+                        "description": "An object containing details of the asynchronous transcription job.",
+                        "properties": {
+                            "CompletionTime": {
+                                "description": "A timestamp that shows when the job was completed.",
+                                "format": "date-time",
+                                "type": "string"
+                            },
+                            "CreationTime": {
+                                "description": "A timestamp that shows when the job was created.",
+                                "format": "date-time",
+                                "type": "string"
+                            },
+                            "FailureReason": {
+                                "description": "If the <code>TranscriptionJobStatus</code> field is <code>FAILED</code>, this field contains information about why the job failed.",
+                                "type": "string"
+                            },
+                            "LanguageCode": {
+                                "description": "The language code for the input speech.",
+                                "enum": [
+                                    "en-US",
+                                    "es-US",
+                                    "en-AU",
+                                    "fr-CA",
+                                    "en-GB",
+                                    "de-DE",
+                                    "pt-BR",
+                                    "fr-FR",
+                                    "it-IT"
+                                ],
+                                "type": "string"
+                            },
+                            "Media": {
+                                "description": "An object that describes the input media for the transcription job.",
+                                "properties": {
+                                    "MediaFileUri": {
+                                        "description": "<p>The S3 location of the input media file. The URI must be in the same region as the API endpoint that you are calling. The general form is:</p> <p> <code> https://s3-&lt;aws-region&gt;.amazonaws.com/&lt;bucket-name&gt;/&lt;keyprefix&gt;/&lt;objectkey&gt; </code> </p> <p>For example:</p> <p> <code>https://s3-us-east-1.amazonaws.com/examplebucket/example.mp4</code> </p> <p> <code>https://s3-us-east-1.amazonaws.com/examplebucket/mediadocs/example.mp4</code> </p> <p>For more information about S3 object names, see <a href=\"http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingMetadata.html#object-keys\">Object Keys</a> in the <i>Amazon S3 Developer Guide</i>.</p>",
+                                        "maxLength": 2000,
+                                        "minLength": 1,
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "MediaFormat": {
+                                "description": "The format of the input media file.",
+                                "enum": [
+                                    "mp3",
+                                    "mp4",
+                                    "wav",
+                                    "flac"
+                                ],
+                                "type": "string"
+                            },
+                            "MediaSampleRateHertz": {
+                                "description": "The sample rate, in Hertz, of the audio track in the input media file. ",
+                                "maximum": 48000,
+                                "minimum": 8000,
+                                "type": "integer"
+                            },
+                            "Settings": {
+                                "description": "Optional settings for the transcription job. Use these settings to turn on speaker recognition, to set the maximum number of speakers that should be identified and to specify a custom vocabulary to use when processing the transcription job.",
+                                "properties": {
+                                    "ChannelIdentification": {
+                                        "description": "<p>Instructs Amazon Transcribe to process each audio channel separately and then merge the transcription output of each channel into a single transcription. </p> <p>Amazon Transcribe also produces a transcription of each item detected on an audio channel, including the start time and end time of the item and alternative transcriptions of the item including the confidence that Amazon Transcribe has in the transcription.</p> <p>You can't set both <code>ShowSpeakerLabels</code> and <code>ChannelIdentification</code> in the same request. If you set both, your request returns a <code>BadRequestException</code>.</p>",
+                                        "type": "boolean"
+                                    },
+                                    "MaxSpeakerLabels": {
+                                        "description": "The maximum number of speakers to identify in the input audio. If there are more speakers in the audio than this number, multiple speakers will be identified as a single speaker. If you specify the <code>MaxSpeakerLabels</code> field, you must set the <code>ShowSpeakerLabels</code> field to true.",
+                                        "maximum": 10,
+                                        "minimum": 2,
+                                        "type": "integer"
+                                    },
+                                    "ShowSpeakerLabels": {
+                                        "description": "<p>Determines whether the transcription job uses speaker recognition to identify different speakers in the input audio. Speaker recognition labels individual speakers in the audio file. If you set the <code>ShowSpeakerLabels</code> field to true, you must also set the maximum number of speaker labels <code>MaxSpeakerLabels</code> field.</p> <p>You can't set both <code>ShowSpeakerLabels</code> and <code>ChannelIdentification</code> in the same request. If you set both, your request returns a <code>BadRequestException</code>.</p>",
+                                        "type": "boolean"
+                                    },
+                                    "VocabularyName": {
+                                        "description": "The name of a vocabulary to use when processing the transcription job.",
+                                        "maxLength": 200,
+                                        "minLength": 1,
+                                        "pattern": "^[0-9a-zA-Z._-]+",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "Transcript": {
+                                "description": "An object that describes the output of the transcription job.",
+                                "properties": {
+                                    "TranscriptFileUri": {
+                                        "description": "<p>The location where the transcription is stored.</p> <p>Use this URI to access the transcription. If you specified an S3 bucket in the <code>OutputBucketName</code> field when you created the job, this is the URI of that bucket. If you chose to store the transcription in Amazon Transcribe, this is a shareable URL that provides secure access to that location.</p>",
+                                        "maxLength": 2000,
+                                        "minLength": 1,
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "TranscriptionJobName": {
+                                "description": "The name of the transcription job.",
+                                "maxLength": 200,
+                                "minLength": 1,
+                                "pattern": "^[0-9a-zA-Z._-]+",
+                                "type": "string"
+                            },
+                            "TranscriptionJobStatus": {
+                                "description": "The status of the transcription job.",
+                                "enum": [
+                                    "IN_PROGRESS",
+                                    "FAILED",
+                                    "COMPLETED"
+                                ],
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    }
+                },
+                "type": "object"
+            },
+            "Transcript": {
+                "description": "Identifies the location of a transcription.",
+                "properties": {
+                    "TranscriptFileUri": {
+                        "description": "<p>The location where the transcription is stored.</p> <p>Use this URI to access the transcription. If you specified an S3 bucket in the <code>OutputBucketName</code> field when you created the job, this is the URI of that bucket. If you chose to store the transcription in Amazon Transcribe, this is a shareable URL that provides secure access to that location.</p>",
+                        "maxLength": 2000,
+                        "minLength": 1,
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "TranscriptionJob": {
+                "description": "Describes an asynchronous transcription job that was created with the <code>StartTranscriptionJob</code> operation. ",
+                "properties": {
+                    "CompletionTime": {
+                        "description": "A timestamp that shows when the job was completed.",
+                        "format": "date-time",
+                        "type": "string"
+                    },
+                    "CreationTime": {
+                        "description": "A timestamp that shows when the job was created.",
+                        "format": "date-time",
+                        "type": "string"
+                    },
+                    "FailureReason": {
+                        "description": "If the <code>TranscriptionJobStatus</code> field is <code>FAILED</code>, this field contains information about why the job failed.",
+                        "type": "string"
+                    },
+                    "LanguageCode": {
+                        "description": "The language code for the input speech.",
+                        "enum": [
+                            "en-US",
+                            "es-US",
+                            "en-AU",
+                            "fr-CA",
+                            "en-GB",
+                            "de-DE",
+                            "pt-BR",
+                            "fr-FR",
+                            "it-IT"
+                        ],
+                        "type": "string"
+                    },
+                    "Media": {
+                        "description": "An object that describes the input media for the transcription job.",
+                        "properties": {
+                            "MediaFileUri": {
+                                "description": "<p>The S3 location of the input media file. The URI must be in the same region as the API endpoint that you are calling. The general form is:</p> <p> <code> https://s3-&lt;aws-region&gt;.amazonaws.com/&lt;bucket-name&gt;/&lt;keyprefix&gt;/&lt;objectkey&gt; </code> </p> <p>For example:</p> <p> <code>https://s3-us-east-1.amazonaws.com/examplebucket/example.mp4</code> </p> <p> <code>https://s3-us-east-1.amazonaws.com/examplebucket/mediadocs/example.mp4</code> </p> <p>For more information about S3 object names, see <a href=\"http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingMetadata.html#object-keys\">Object Keys</a> in the <i>Amazon S3 Developer Guide</i>.</p>",
+                                "maxLength": 2000,
+                                "minLength": 1,
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "MediaFormat": {
+                        "description": "The format of the input media file.",
+                        "enum": [
+                            "mp3",
+                            "mp4",
+                            "wav",
+                            "flac"
+                        ],
+                        "type": "string"
+                    },
+                    "MediaSampleRateHertz": {
+                        "description": "The sample rate, in Hertz, of the audio track in the input media file. ",
+                        "maximum": 48000,
+                        "minimum": 8000,
+                        "type": "integer"
+                    },
+                    "Settings": {
+                        "description": "Optional settings for the transcription job. Use these settings to turn on speaker recognition, to set the maximum number of speakers that should be identified and to specify a custom vocabulary to use when processing the transcription job.",
+                        "properties": {
+                            "ChannelIdentification": {
+                                "description": "<p>Instructs Amazon Transcribe to process each audio channel separately and then merge the transcription output of each channel into a single transcription. </p> <p>Amazon Transcribe also produces a transcription of each item detected on an audio channel, including the start time and end time of the item and alternative transcriptions of the item including the confidence that Amazon Transcribe has in the transcription.</p> <p>You can't set both <code>ShowSpeakerLabels</code> and <code>ChannelIdentification</code> in the same request. If you set both, your request returns a <code>BadRequestException</code>.</p>",
+                                "type": "boolean"
+                            },
+                            "MaxSpeakerLabels": {
+                                "description": "The maximum number of speakers to identify in the input audio. If there are more speakers in the audio than this number, multiple speakers will be identified as a single speaker. If you specify the <code>MaxSpeakerLabels</code> field, you must set the <code>ShowSpeakerLabels</code> field to true.",
+                                "maximum": 10,
+                                "minimum": 2,
+                                "type": "integer"
+                            },
+                            "ShowSpeakerLabels": {
+                                "description": "<p>Determines whether the transcription job uses speaker recognition to identify different speakers in the input audio. Speaker recognition labels individual speakers in the audio file. If you set the <code>ShowSpeakerLabels</code> field to true, you must also set the maximum number of speaker labels <code>MaxSpeakerLabels</code> field.</p> <p>You can't set both <code>ShowSpeakerLabels</code> and <code>ChannelIdentification</code> in the same request. If you set both, your request returns a <code>BadRequestException</code>.</p>",
+                                "type": "boolean"
+                            },
+                            "VocabularyName": {
+                                "description": "The name of a vocabulary to use when processing the transcription job.",
+                                "maxLength": 200,
+                                "minLength": 1,
+                                "pattern": "^[0-9a-zA-Z._-]+",
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "Transcript": {
+                        "description": "An object that describes the output of the transcription job.",
+                        "properties": {
+                            "TranscriptFileUri": {
+                                "description": "<p>The location where the transcription is stored.</p> <p>Use this URI to access the transcription. If you specified an S3 bucket in the <code>OutputBucketName</code> field when you created the job, this is the URI of that bucket. If you chose to store the transcription in Amazon Transcribe, this is a shareable URL that provides secure access to that location.</p>",
+                                "maxLength": 2000,
+                                "minLength": 1,
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "TranscriptionJobName": {
+                        "description": "The name of the transcription job.",
+                        "maxLength": 200,
+                        "minLength": 1,
+                        "pattern": "^[0-9a-zA-Z._-]+",
+                        "type": "string"
+                    },
+                    "TranscriptionJobStatus": {
+                        "description": "The status of the transcription job.",
+                        "enum": [
+                            "IN_PROGRESS",
+                            "FAILED",
+                            "COMPLETED"
+                        ],
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "TranscriptionJobName": {
+                "maxLength": 200,
+                "minLength": 1,
+                "pattern": "^[0-9a-zA-Z._-]+",
+                "type": "string"
+            },
+            "TranscriptionJobStatus": {
+                "enum": [
+                    "IN_PROGRESS",
+                    "FAILED",
+                    "COMPLETED"
+                ],
+                "type": "string"
+            },
+            "TranscriptionJobSummaries": {
+                "items": {
+                    "description": "Provides a summary of information about a transcription job. .",
+                    "properties": {
+                        "CompletionTime": {
+                            "description": "A timestamp that shows when the job was completed.",
+                            "format": "date-time",
+                            "type": "string"
+                        },
+                        "CreationTime": {
+                            "description": "A timestamp that shows when the job was created.",
+                            "format": "date-time",
+                            "type": "string"
+                        },
+                        "FailureReason": {
+                            "description": "If the <code>TranscriptionJobStatus</code> field is <code>FAILED</code>, a description of the error.",
+                            "type": "string"
+                        },
+                        "LanguageCode": {
+                            "description": "The language code for the input speech.",
+                            "enum": [
+                                "en-US",
+                                "es-US",
+                                "en-AU",
+                                "fr-CA",
+                                "en-GB",
+                                "de-DE",
+                                "pt-BR",
+                                "fr-FR",
+                                "it-IT"
+                            ],
+                            "type": "string"
+                        },
+                        "OutputLocationType": {
+                            "description": "<p>Indicates the location of the output of the transcription job.</p> <p>If the value is <code>CUSTOMER_BUCKET</code> then the location is the S3 bucket specified in the <code>outputBucketName</code> field when the transcription job was started with the <code>StartTranscriptionJob</code> operation.</p> <p>If the value is <code>SERVICE_BUCKET</code> then the output is stored by Amazon Transcribe and can be retrieved using the URI in the <code>GetTranscriptionJob</code> response's <code>TranscriptFileUri</code> field.</p>",
+                            "enum": [
+                                "CUSTOMER_BUCKET",
+                                "SERVICE_BUCKET"
+                            ],
+                            "type": "string"
+                        },
+                        "TranscriptionJobName": {
+                            "description": "The name of the transcription job.",
+                            "maxLength": 200,
+                            "minLength": 1,
+                            "pattern": "^[0-9a-zA-Z._-]+",
+                            "type": "string"
+                        },
+                        "TranscriptionJobStatus": {
+                            "description": "The status of the transcription job. When the status is <code>COMPLETED</code>, use the <code>GetTranscriptionJob</code> operation to get the results of the transcription.",
+                            "enum": [
+                                "IN_PROGRESS",
+                                "FAILED",
+                                "COMPLETED"
+                            ],
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                },
+                "type": "array"
+            },
+            "TranscriptionJobSummary": {
+                "description": "Provides a summary of information about a transcription job. .",
+                "properties": {
+                    "CompletionTime": {
+                        "description": "A timestamp that shows when the job was completed.",
+                        "format": "date-time",
+                        "type": "string"
+                    },
+                    "CreationTime": {
+                        "description": "A timestamp that shows when the job was created.",
+                        "format": "date-time",
+                        "type": "string"
+                    },
+                    "FailureReason": {
+                        "description": "If the <code>TranscriptionJobStatus</code> field is <code>FAILED</code>, a description of the error.",
+                        "type": "string"
+                    },
+                    "LanguageCode": {
+                        "description": "The language code for the input speech.",
+                        "enum": [
+                            "en-US",
+                            "es-US",
+                            "en-AU",
+                            "fr-CA",
+                            "en-GB",
+                            "de-DE",
+                            "pt-BR",
+                            "fr-FR",
+                            "it-IT"
+                        ],
+                        "type": "string"
+                    },
+                    "OutputLocationType": {
+                        "description": "<p>Indicates the location of the output of the transcription job.</p> <p>If the value is <code>CUSTOMER_BUCKET</code> then the location is the S3 bucket specified in the <code>outputBucketName</code> field when the transcription job was started with the <code>StartTranscriptionJob</code> operation.</p> <p>If the value is <code>SERVICE_BUCKET</code> then the output is stored by Amazon Transcribe and can be retrieved using the URI in the <code>GetTranscriptionJob</code> response's <code>TranscriptFileUri</code> field.</p>",
+                        "enum": [
+                            "CUSTOMER_BUCKET",
+                            "SERVICE_BUCKET"
+                        ],
+                        "type": "string"
+                    },
+                    "TranscriptionJobName": {
+                        "description": "The name of the transcription job.",
+                        "maxLength": 200,
+                        "minLength": 1,
+                        "pattern": "^[0-9a-zA-Z._-]+",
+                        "type": "string"
+                    },
+                    "TranscriptionJobStatus": {
+                        "description": "The status of the transcription job. When the status is <code>COMPLETED</code>, use the <code>GetTranscriptionJob</code> operation to get the results of the transcription.",
+                        "enum": [
+                            "IN_PROGRESS",
+                            "FAILED",
+                            "COMPLETED"
+                        ],
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "UpdateVocabularyRequest": {
+                "properties": {
+                    "LanguageCode": {
+                        "description": "The language code of the vocabulary entries.",
+                        "enum": [
+                            "en-US",
+                            "es-US",
+                            "en-AU",
+                            "fr-CA",
+                            "en-GB",
+                            "de-DE",
+                            "pt-BR",
+                            "fr-FR",
+                            "it-IT"
+                        ],
+                        "type": "string"
+                    },
+                    "Phrases": {
+                        "description": "An array of strings containing the vocabulary entries.",
+                        "items": {
+                            "maxLength": 256,
+                            "minLength": 0,
+                            "type": "string"
+                        },
+                        "type": "array"
+                    },
+                    "VocabularyName": {
+                        "description": "The name of the vocabulary to update. The name is case-sensitive.",
+                        "maxLength": 200,
+                        "minLength": 1,
+                        "pattern": "^[0-9a-zA-Z._-]+",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "VocabularyName",
+                    "LanguageCode",
+                    "Phrases"
+                ],
+                "type": "object"
+            },
+            "UpdateVocabularyResponse": {
+                "properties": {
+                    "LanguageCode": {
+                        "description": "The language code of the vocabulary entries.",
+                        "enum": [
+                            "en-US",
+                            "es-US",
+                            "en-AU",
+                            "fr-CA",
+                            "en-GB",
+                            "de-DE",
+                            "pt-BR",
+                            "fr-FR",
+                            "it-IT"
+                        ],
+                        "type": "string"
+                    },
+                    "LastModifiedTime": {
+                        "description": "The date and time that the vocabulary was updated.",
+                        "format": "date-time",
+                        "type": "string"
+                    },
+                    "VocabularyName": {
+                        "description": "The name of the vocabulary that was updated.",
+                        "maxLength": 200,
+                        "minLength": 1,
+                        "pattern": "^[0-9a-zA-Z._-]+",
+                        "type": "string"
+                    },
+                    "VocabularyState": {
+                        "description": "The processing state of the vocabulary. When the <code>VocabularyState</code> field contains <code>READY</code> the vocabulary is ready to be used in a <code>StartTranscriptionJob</code> request.",
+                        "enum": [
+                            "PENDING",
+                            "READY",
+                            "FAILED"
+                        ],
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "Uri": {
+                "maxLength": 2000,
+                "minLength": 1,
+                "type": "string"
+            },
+            "Vocabularies": {
+                "items": {
+                    "description": "Provides information about a custom vocabulary. ",
+                    "properties": {
+                        "LanguageCode": {
+                            "description": "The language code of the vocabulary entries.",
+                            "enum": [
+                                "en-US",
+                                "es-US",
+                                "en-AU",
+                                "fr-CA",
+                                "en-GB",
+                                "de-DE",
+                                "pt-BR",
+                                "fr-FR",
+                                "it-IT"
+                            ],
+                            "type": "string"
+                        },
+                        "LastModifiedTime": {
+                            "description": "The date and time that the vocabulary was last modified.",
+                            "format": "date-time",
+                            "type": "string"
+                        },
+                        "VocabularyName": {
+                            "description": "The name of the vocabulary.",
+                            "maxLength": 200,
+                            "minLength": 1,
+                            "pattern": "^[0-9a-zA-Z._-]+",
+                            "type": "string"
+                        },
+                        "VocabularyState": {
+                            "description": "The processing state of the vocabulary. If the state is <code>READY</code> you can use the vocabulary in a <code>StartTranscriptionJob</code> request.",
+                            "enum": [
+                                "PENDING",
+                                "READY",
+                                "FAILED"
+                            ],
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                },
+                "type": "array"
+            },
+            "VocabularyInfo": {
+                "description": "Provides information about a custom vocabulary. ",
+                "properties": {
+                    "LanguageCode": {
+                        "description": "The language code of the vocabulary entries.",
+                        "enum": [
+                            "en-US",
+                            "es-US",
+                            "en-AU",
+                            "fr-CA",
+                            "en-GB",
+                            "de-DE",
+                            "pt-BR",
+                            "fr-FR",
+                            "it-IT"
+                        ],
+                        "type": "string"
+                    },
+                    "LastModifiedTime": {
+                        "description": "The date and time that the vocabulary was last modified.",
+                        "format": "date-time",
+                        "type": "string"
+                    },
+                    "VocabularyName": {
+                        "description": "The name of the vocabulary.",
+                        "maxLength": 200,
+                        "minLength": 1,
+                        "pattern": "^[0-9a-zA-Z._-]+",
+                        "type": "string"
+                    },
+                    "VocabularyState": {
+                        "description": "The processing state of the vocabulary. If the state is <code>READY</code> you can use the vocabulary in a <code>StartTranscriptionJob</code> request.",
+                        "enum": [
+                            "PENDING",
+                            "READY",
+                            "FAILED"
+                        ],
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "VocabularyName": {
+                "maxLength": 200,
+                "minLength": 1,
+                "pattern": "^[0-9a-zA-Z._-]+",
+                "type": "string"
+            },
+            "VocabularyState": {
+                "enum": [
+                    "PENDING",
+                    "READY",
+                    "FAILED"
+                ],
+                "type": "string"
+            }
+        },
+        "parameters": {
+            "Action": {
+                "in": "query",
+                "name": "Action",
+                "required": true,
+                "schema": {
+                    "type": "string"
+                }
+            },
+            "Version": {
+                "in": "query",
+                "name": "Version",
+                "required": true,
+                "schema": {
+                    "type": "string"
+                }
+            },
+            "X-Amz-Algorithm": {
+                "in": "header",
+                "name": "X-Amz-Algorithm",
+                "required": false,
+                "schema": {
+                    "type": "string"
+                }
+            },
+            "X-Amz-Content-Sha256": {
+                "in": "header",
+                "name": "X-Amz-Content-Sha256",
+                "required": false,
+                "schema": {
+                    "type": "string"
+                }
+            },
+            "X-Amz-Credential": {
+                "in": "header",
+                "name": "X-Amz-Credential",
+                "required": false,
+                "schema": {
+                    "type": "string"
+                }
+            },
+            "X-Amz-Date": {
+                "in": "header",
+                "name": "X-Amz-Date",
+                "required": false,
+                "schema": {
+                    "type": "string"
+                }
+            },
+            "X-Amz-Security-Token": {
+                "in": "header",
+                "name": "X-Amz-Security-Token",
+                "required": false,
+                "schema": {
+                    "type": "string"
+                }
+            },
+            "X-Amz-Signature": {
+                "in": "header",
+                "name": "X-Amz-Signature",
+                "required": false,
+                "schema": {
+                    "type": "string"
+                }
+            },
+            "X-Amz-SignedHeaders": {
+                "in": "header",
+                "name": "X-Amz-SignedHeaders",
+                "required": false,
+                "schema": {
+                    "type": "string"
+                }
+            }
+        },
+        "securitySchemes": {
+            "hmac": {
+                "description": "Amazon Signature authorization v4",
+                "in": "header",
+                "name": "Authorization",
+                "type": "apiKey",
+                "x-amazon-apigateway-authtype": "awsSigv4"
+            }
+        }
+    }
+}
