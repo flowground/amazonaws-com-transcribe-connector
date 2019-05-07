@@ -1,11 +1,11 @@
-# ![LOGO](logo.png) Amazon Transcribe Service MSP Connector
+# ![LOGO](logo.png) Amazon Transcribe Service **flow**ground Connector
 
 ## Description
 
-A generated MSP connector for the Amazon Transcribe Service API (version 2017-10-26).
+A generated **flow**ground connector for the Amazon Transcribe Service API (version 2017-10-26).
 
 Generated from: https://api.apis.guru/v2/specs/amazonaws.com/transcribe/2017-10-26/swagger.json<br/>
-Generated at: 2019-05-07T11:16:48+03:00
+Generated at: 2019-05-07T17:36:27+03:00
 
 ## API Description
 
@@ -136,7 +136,7 @@ Supported authorization schemes:
 
 ## License
 
-flowground :- Telekom iPaaS / amazonaws-com-transcribe-connector<br/>
+**flow**ground :- Telekom iPaaS / amazonaws-com-transcribe-connector<br/>
 Copyright © 2019, [Deutsche Telekom AG](https://www.telekom.de)<br/>
 contact: flowground@telekom.de
 
